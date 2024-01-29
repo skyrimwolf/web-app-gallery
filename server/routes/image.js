@@ -11,13 +11,13 @@ router.get('/get-all', imageController.getAllImageNames)
 //POST method on path /images/upload
 router.post('/upload', middleware.multerMiddleware, imageController.uploadImage)
 
-//GET method on path /images/:imageUrl
-router.get('/download/:imageUrl', imageController.downloadImage)
+//GET method on path /images/:imageId
+router.get('/download/:imageId', imageController.downloadImage)
 
-//POST method on path /images/rotate/:imageUrl
-router.post('/rotate/:imageUrl', imageController.rotateImage)     //maybe PUT instead of POST?
+//POST method on path /images/rotate/:imageId
+router.post('/rotate/:imageId', imageController.rotateImage)     //maybe PUT instead of POST?
 
-//DELETE method on path /images/remove/:imageUrl
-router.delete('/remove/:imageUrl', imageController.removeImage)
+//DELETE method on path /images/remove/:imageId
+router.delete('/remove/:imageId', imageController.removeImage)
 
 module.exports = router
