@@ -1,5 +1,6 @@
 const fs = require('fs').promises
 const path = require('path')
+const sharp = require('sharp')
 
 const rootDir = require('../util/path')
 
@@ -20,7 +21,7 @@ exports.getAllImageNames = async (req, res, next) => {
         console.err('getAllImages(): Error fetching image list:', err)
 
         res.status(500) //Internal Server Error
-            .send('Internal Server Error')
+            .send('Internal Server Error!')
     }
 }
 
@@ -44,13 +45,30 @@ exports.downloadImage = async (req, res, next) => {
     }
     catch (err) {
         res.status(404)
-            .send('downloadImage(): Image not found')
+            .send('downloadImage(): Image not found!')
     }
 }
 
 //controller for rotating an image on server
-exports.rotateImage = (req, res, next) => {
+exports.rotateImage = async (req, res, next) => {
+    const imageId = req.params.imageId
+    const imagePath = path.join(rootDir, 'images', imageId)
 
+    try {
+        const targetImageBuffer = await fs.readFile(imagePath)
+        const rotatedImageBuffer = await sharp(targetImageBuffer).rotate(90).toBuffer() //rotates image and puts it to buffer using sharp module
+
+        await fs.writeFile(imagePath, rotatedImageBuffer) //overwrite the image with rotated one
+
+        res.status(200)
+            .send('Image rotated succesfully!')
+    }
+    catch (err) {
+        console.err('rotateImage(): Error rotating an image:', err)
+
+        res.status(500) //Internal Server Error
+            .send('Internal Server Error!')
+    }
 }
 
 //controller for removing an image from server
