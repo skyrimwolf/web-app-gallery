@@ -6,8 +6,10 @@ const rootDir = require('../util/path')
 
 const imagesFolderPath = path.join(rootDir, 'images')
 
+//NOTE: convention I'll follow for naming controllers for routes will be: HTTP method + controllerName -> POST method + uploadImage -> postUploadImage
+
 //controller for getting all of the images from server
-exports.getAllImageNames = async (req, res, next) => {
+exports.getGetAllImageNames = async (req, res, next) => {
     try {
         const files = await fs.readdir(imagesFolderPath) //get filenames from imagesPath
         
@@ -26,13 +28,13 @@ exports.getAllImageNames = async (req, res, next) => {
 }
 
 //controller for uploading an image to server
-exports.uploadImage = (req, res, next) => {
+exports.postUploadImage = (req, res, next) => {
     res.status(200) //OK
         .send('Image uploaded successfully!')
 }
 
 //controller for downloading an image from server
-exports.downloadImage = async (req, res, next) => {
+exports.getDownloadImage = async (req, res, next) => {
     const imageId = req.params.imageId
     const imagePath = path.join(rootDir, 'images', imageId)
 
@@ -44,23 +46,23 @@ exports.downloadImage = async (req, res, next) => {
             .sendFile(imagePath, {root: imagesFolderPath})
     }
     catch (err) {
-        res.status(404)
+        res.status(404) //Not Found
             .send('downloadImage(): Image not found!')
     }
 }
 
 //controller for rotating an image on server
-exports.rotateImage = async (req, res, next) => {
+exports.postRotateImage = async (req, res, next) => {
     const imageId = req.params.imageId
-    const imagePath = path.join(rootDir, 'images', imageId)
+    const imagePath = path.join(imagesFolderPath, imageId)
 
     try {
-        const targetImageBuffer = await fs.readFile(imagePath)
+        const targetImageBuffer = await fs.readFile(imagePath) //read from buffer
         const rotatedImageBuffer = await sharp(targetImageBuffer).rotate(90).toBuffer() //rotates image and puts it to buffer using sharp module
 
         await fs.writeFile(imagePath, rotatedImageBuffer) //overwrite the image with rotated one
 
-        res.status(200)
+        res.status(200) //OK
             .send('Image rotated succesfully!')
     }
     catch (err) {
@@ -72,6 +74,20 @@ exports.rotateImage = async (req, res, next) => {
 }
 
 //controller for removing an image from server
-exports.removeImage = (req, res, next) => {
+exports.deleteRemoveImage = async (req, res, next) => {
+    try {
+        const imageId = req.params.imageId
+        const imagePath = path.join(imagesFolderPath, imageId)
 
+        await fs.unlink(imagePath) //unlink is used to remove the image from the server
+
+        res.status(200) //OK
+            .send('Image removed successfully!')
+    }
+    catch (err) {
+        console.err('rotateImage(): Error rotating an image:', err)
+
+        res.status(500) //Internal Server Error
+            .send('Internal Server Error!')
+    }
 }
