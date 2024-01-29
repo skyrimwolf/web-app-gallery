@@ -1,14 +1,15 @@
 const express = require('express')
 
 const imageController = require('../controllers/image')
+const middleware = require('../util/multer')
 
 const router = express.Router()
 
 //GET method on path /images/get-all
-router.get('/get-all', imageController.getAllImages)
+router.get('/get-all', imageController.getAllImageNames)
 
 //POST method on path /images/upload
-router.post('/upload', imageController.uploadImage)
+router.post('/upload', middleware.multerMiddleware, imageController.uploadImage)
 
 //GET method on path /images/:imageUrl
 router.get('/download/:imageUrl', imageController.downloadImage)
