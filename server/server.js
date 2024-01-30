@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 
 const imageRoutes = require('./routes/image')
-const indexListUtil = require('./util/indexList')
+const indexListUtil = require('./controllers/indexList')
 
 const PORT = 5000
 

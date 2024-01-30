@@ -3,7 +3,7 @@ const path = require('path')
 const sharp = require('sharp')
 
 const rootDir = require('../util/path')
-const indexListUtil = require('../util/indexList')
+const indexListUtil = require('./indexList')
 
 const imagesFolderPath = path.join(rootDir, 'images')
 
