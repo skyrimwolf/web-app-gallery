@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const App = () => {
     const [imageList, setImageList] = useState([]) //init state as an empty list
-    const [selectedImagePath, setSelectedImagePath] = useState()
+    const [selectedImagePath, setSelectedImagePath] = useState('')
     const [imageFile, setImageFile] = useState()
     const inputFileRef = useRef(null)
 
@@ -39,6 +39,7 @@ const App = () => {
 
           if (inputFileRef.current) { //get it reset
             inputFileRef.current.value = ''
+            setImageFile('')
           }
 
           console.log('Image uploaded successfully on path: ' + result.data.imagePath)
@@ -54,7 +55,7 @@ const App = () => {
 
     //function used to handle clicking on the download button
     const handleDownload = async () => {
-      if (selectedImagePath) {
+      if (selectedImagePath !== '') {
         const selectedImageName = new URL(selectedImagePath).pathname.split('/').pop() //get name of the image
 
         try {
@@ -80,7 +81,7 @@ const App = () => {
 
     //function used to handle clicking on the rotate button
     const handleRotate = async () => {
-      if (selectedImagePath) {
+      if (selectedImagePath !== '') {
         try {
           const selectedImageName = new URL(selectedImagePath).pathname.split('/').pop() //get name of the image
           
@@ -99,7 +100,7 @@ const App = () => {
 
     //function used to handle clicking on the delete button
     const handleDelete = async () => {
-      if (selectedImagePath) {
+      if (selectedImagePath !== '') {
         try {
           const selectedImageName = new URL(selectedImagePath).pathname.split('/').pop() //get name of the image
 
@@ -110,6 +111,8 @@ const App = () => {
           //if we open 2 windows and we delete on each one some images, the first window won't see the changes made in the second one (and vice versa)
 
           alert('Image deleted successfully!')
+
+          setSelectedImagePath('') //reset selectedImagePath
         }
         catch (err) {
           console.error('handleDelete(): Error deleting file: ', err)
