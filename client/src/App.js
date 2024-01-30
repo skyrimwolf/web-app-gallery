@@ -32,7 +32,9 @@ const App = () => {
         try {
           const result = await axios.post('/images/upload', formData) //sends data as post request to '/images/upload'
 
-          getImages() //refresh the list
+          getImages() //refresh the list 
+          //NOTE: another approach is to just push the newly uploaded image to the imageList, but I didn't do it because that way
+          //if we open 2 windows and we upload on each one some images, the first window won't get the images the second one uploaded (and vice versa)
 
           console.log('Image uploaded successfully on path: ' + result.data.imagePath)
         }
@@ -91,9 +93,22 @@ const App = () => {
     }
 
     //function used to handle clicking on the delete button
-    const handleDelete = () => {
+    const handleDelete = async () => {
       if (selectedImagePath) {
-        //logic
+        try {
+          const selectedImageName = new URL(selectedImagePath).pathname.split('/').pop() //get name of the image
+
+          await axios.delete(`/images/remove/${selectedImageName}`)
+
+          getImages() //refresh the list 
+          //NOTE: another approach is to just pop the newly deleted image from the imageList, but I didn't do it because that way
+          //if we open 2 windows and we delete on each one some images, the first window won't see the changes made in the second one (and vice versa)
+
+          alert('Image deleted successfully!')
+        }
+        catch (err) {
+          console.log('handleDelete(): Error deleting file: ', err)
+        }
       }
       else {
         alert('You must first choose an image you wish to delete!')
