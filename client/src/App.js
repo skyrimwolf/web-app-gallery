@@ -4,6 +4,7 @@ import axios from 'axios'
 const App = () => {
     const [imageList, setImageList] = useState([]) //init state as an empty list
     const [selectedImagePath, setSelectedImagePath] = useState()
+    const [imageFile, setImageFile] = useState()
 
     useEffect(() => {
       const getImages = async () => {
@@ -20,6 +21,15 @@ const App = () => {
       getImages()
     }, []) //[] means it will be ran only at the first render
     
+    const handleUpload = () => {
+      if (imageFile) {
+        //logic
+      }
+      else {
+        alert('You must first choose an image you wish to upload!')
+      }
+    }
+
     const handleDownload = async () => {
       if (selectedImagePath) {
         const selectedImageName = new URL(selectedImagePath).pathname.split('/').pop() //get name of the image
@@ -40,28 +50,46 @@ const App = () => {
           console.log('handleDownload(): Error downloading file: ', err)
         }
       }
+      else {
+        alert('You must first pick an image you wish to download!')
+      }
     }
 
     const handleRotate = async () => {
-      try {
-        const selectedImageName = new URL(selectedImagePath).pathname.split('/').pop() //get name of the image
-        
-        await axios.post(`/images/rotate/${selectedImageName}`)
-
-        alert('Image rotated successfully!')
+      if (selectedImagePath) {
+        try {
+          const selectedImageName = new URL(selectedImagePath).pathname.split('/').pop() //get name of the image
+          
+          await axios.post(`/images/rotate/${selectedImageName}`)
+  
+          alert('Image rotated successfully!')
+        }
+        catch (err) {
+          console.log('handleRotate(): Error rotating file: ', err)
+        }
       }
-      catch (err) {
-        console.log('handleRotate(): Error rotating file: ', err)
+      else {
+        alert('You must first pick an image you wish to rotate!')
       }
     }
 
     const handleDelete = () => {
-
+      if (selectedImagePath) {
+        //logic
+      }
+      else {
+        alert('You must first choose an image you wish to delete!')
+      }
     }
 
     return (
       <div>
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: 100}}>
+        <input type="file"
+               onChange={(event) => {setImageFile(event.target.files[0])}} 
+               accept="image/jpg">
+        </input>
+          <button id='upload' onClick={handleUpload}>Upload</button>
           <button id='download' onClick={handleDownload}>Download</button>
           <button id='rotate' onClick={handleRotate}>Rotate</button>
           <button id='delete' onClick={handleDelete}>Delete</button>
