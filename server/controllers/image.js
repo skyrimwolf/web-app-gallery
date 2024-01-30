@@ -34,8 +34,10 @@ exports.getGetAllImageNames = async (req, res, next) => {
 
 //controller for uploading an image to server
 exports.postUploadImage = (req, res, next) => {
+    const destPath = path.join(rootDir, 'images', req.file.filename)
+
     res.status(200) //OK
-        .send('Image uploaded successfully!')
+        .json({message: 'Image uploaded successfully!', imagePath: destPath})
 }
 
 //controller for downloading an image from server

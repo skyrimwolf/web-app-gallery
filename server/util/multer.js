@@ -2,16 +2,19 @@
 //This is just a util I will use to store and handle file data
 
 const multer = require('multer')
+const path = require('path')
+
+const rootDir = require('./path')
 
 const singleStorage = multer.diskStorage({ //register multer middleware
     destination: (req, file, cb) => {
-        return cb(null, "./images")
+        return cb(null, path.join(rootDir, 'images')) //destination is 'images' folder in the server directory
     },
     filename: (req, file, cb) => {
         return cb(null, `${Date.now()}_${file.originalname}`) //how the file will be saved as
     }
 })
 
-const singleUpload = multer({singleStorage})
+const singleUpload = multer({storage: singleStorage})
 
 exports.multerMiddleware = singleUpload.single('image')
