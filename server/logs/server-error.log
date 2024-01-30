@@ -1,0 +1,1 @@
+{"level":"error","message":"deleteRemoveImage(): Error removing an image: Error: ENOENT: no such file or directory, unlink 'C:\\Users\\AleksandarČernicin\\Desktop\\web-app-gallery\\server\\images\\1706634922942_tigar.jpg'","timestamp":"2024-01-30T17:18:28.751Z"}

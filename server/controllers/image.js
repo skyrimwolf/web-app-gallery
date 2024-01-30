@@ -4,6 +4,7 @@ const sharp = require('sharp')
 
 const rootDir = require('../util/path')
 const indexListUtil = require('./indexList')
+const logger = require('./logger')
 
 const imagesFolderPath = path.join(rootDir, 'images')
 
@@ -12,21 +13,39 @@ const imagesFolderPath = path.join(rootDir, 'images')
 //controller for getting all of the images from server
 exports.getGetAllImageNames = async (req, res, next) => {
     try {
-        console.log('Proba1')
+        console.log('first')
         const indexList = indexListUtil.currIndexList()
-        console.log('Proba2')
 
-        const filesWithPath = indexList.map((file) => { //create {filename, path} array of objects
+        /*const filesWithPath = indexList.map((file) => { //create {filename, path} array of objects
             const currImagePath = path.join(imagesFolderPath, file.filename);
             return { filename: file.filename, path: currImagePath };
-        });
+        })*/
 
+        console.log('hello')
+
+        const filesWithPath = await Promise.all(indexList.map(async (file) => { //since getGetAllImageNames is async, we have to await it
+            const currImagePath = path.join(imagesFolderPath, file.filename)
+
+            return { filename: file.filename, path: currImagePath }
+        }))
+
+        console.log(filesWithPath)
+
+/*const filesWithPath = await Promise.all(indexList.map(async (file) => {
+            const currImagePath = path.join(imagesFolderPath, file.filename);
+            return { filename: file.filename, path: currImagePath };
+        })); */
+
+        logger.serverLogger.log('info', 'getAllImages(): Successfully got list of image names with paths') //log the given action
+        
         res.status(200) //OK
             .json(filesWithPath) //return filenames
     } 
     catch(err) {
-        console.err('getAllImages(): Error fetching image list:', err)
+        //console.err('getAllImages(): Error fetching image list:', err)
 
+        logger.serverLogger.log('error', `getAllImages(): Error fetching image list: ${err}`) //log the given error
+        
         res.status(500) //Internal Server Error
             .send('Internal Server Error!')
     }
@@ -38,18 +57,22 @@ exports.postUploadImage = async (req, res, next) => {
 
     indexListUtil.addToIndexList({filename: req.file.filename}) //add new object to indexList
     //NOTE: I thought about putting in the imagePath, but since you'll be checking if everything works, for it to work would then require me to have the server running at all times
-    //because the path would have my URL from PC if i send you some images to be loaded upon first run (like pre-loaded data so you can see everything is working nicely)
-    //although, in reality, i'd put in the path and perhaps some other info as well
-    //if I explained it poorly, i'll explain it better on the interview :)
+    //      because the path would have my URL from PC if i send you some images to be loaded upon first run (like pre-loaded data so you can see everything is working nicely)
+    //      although, in reality, i'd put in the path and perhaps some other info as well
+    //      if I explained it poorly, i'll explain it better on the interview :)
 
     try {
         indexListUtil.updateIndexJson() //try to update the index json file
+
+        logger.serverLogger.log('info', `postUploadImage(): Image ${req.file.filename} uploaded successfully!`) //log the given action
 
         res.status(200) //OK
             .json({message: 'Image uploaded successfully!', imagePath: destPath})
     }
     catch (err) {
-        console.error('postUploadImage(): Error uploading the image!')
+        //console.error('postUploadImage(): Error uploading the image!')
+
+        logger.serverLogger.log('error', `postUploadImage(): Error uploading the image: ${err}`) //log the given error
 
         res.status(500) //Internal Server Error
             .send('Internal Server Error!')
@@ -64,11 +87,15 @@ exports.getDownloadImage = async (req, res, next) => { //indexList is not needed
     try {
         await fs.access(imagePath)
 
+        logger.serverLogger.log('info', `getDownloadImage(): Image ${imageId} downloaded successfully!`) //log the given action
+
         res.setHeader('Content-Type', 'image/jpg') //we need to inform the client that we're sending jpg file
-        res.status(200) //OK
+            .status(200) //OK
             .sendFile(imagePath)
     }
     catch (err) {
+        logger.serverLogger.log('error', `getDownloadImage(): Image not found: ${err}`) //log the given error
+
         res.status(404) //Not Found
             .send('getDownloadImage(): Image not found!')
     }
@@ -85,11 +112,14 @@ exports.postRotateImage = async (req, res, next) => { //indexList is not needed 
 
         await fs.writeFile(imagePath, rotatedImageBuffer) //overwrite the image with rotated one
 
+        logger.serverLogger.log('info', `postRotateImage(): Image ${imageId} rotated successfully!`) //log the given action
+
         res.status(200) //OK
             .send('Image rotated succesfully!')
     }
     catch (err) {
-        console.err('postRotateImage(): Error rotating an image:', err)
+        //console.err('postRotateImage(): Error rotating an image:', err)
+        logger.serverLogger.log('error', `postRotateImage(): Error rotating an image: ${err}`) //log the given error
 
         res.status(500) //Internal Server Error
             .send('Internal Server Error!')
@@ -108,13 +138,17 @@ exports.deleteRemoveImage = async (req, res, next) => {
 
         indexListUtil.updateIndexJson() //try to update the index json file
 
+        logger.serverLogger.log('info', `deleteRemoveImage(): Image ${imageId} removed successfully!`) //log the given action
+
         res.status(200) //OK
             .send('Image removed successfully!')
     }
     catch (err) {
-        console.error('deleteRemoveImage(): Error removing an image:', err)
+        //console.error('deleteRemoveImage(): Error removing an image:', err)
+        logger.serverLogger.log('error', `deleteRemoveImage(): Error removing an image: ${err}`) //log the given error
 
         res.status(500) //Internal Server Error
             .send('Internal Server Error!')
+
     }
 }

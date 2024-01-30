@@ -2,10 +2,14 @@ const fs = require('fs').promises
 const path = require('path')
 
 const rootDir = require('../util/path')
+const logger = require('./logger')
 
 const indexPath = path.join(rootDir, 'index.json')
 
 let indexList = []
+
+//NOTE: I was thinking about doing logging here, but, it may mess up crop replay, because this is just a helper tool used
+//      even so, i will log errors if they occur, as that may be useful, but I won't log success in this file
 
 exports.initializeIndexList = async () => { //we can import this method to always get the index list (even tho I won't really use it, but it's good to have it)
     try {
@@ -14,8 +18,10 @@ exports.initializeIndexList = async () => { //we can import this method to alway
         indexList = JSON.parse(indexData) //parse data from index.json to indexList
     }
     catch (err) {
-        console.error('initializeIndexList(): Error initializing index list', err)
+        //console.error('initializeIndexList(): Error initializing index list', err)
         indexList = [] //make it so it's empty
+
+        logger.serverLogger.log('error', `initializeIndexList(): Error initializing index list: ${err}`) //log the given error
     }
 }
 
@@ -30,12 +36,11 @@ exports.updateIndexJson = async () => {
         await fs.writeFile(indexPath, indexListJsonString) //update the index.json file
     }
     catch (err) {
-        console.error('updateIndexJson(): Error updating index json file!')
+        //console.error('updateIndexJson(): Error updating index json file!')
+        logger.serverLogger.log('error', `updateIndexJson(): Error updating index json file: ${err}`) //log the given error
     }
 }
 
 exports.removeFromIndexList = (fileName) => {
-    console.log('List before: ' + indexList)
     indexList = indexList.filter(image => image.filename !== fileName) //removing the element from indexList
-    console.log('List after: ' + indexList)
 }

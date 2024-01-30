@@ -1,0 +1,113 @@
+{"level":"info","message":"postUploadImage(): Image 1706634261464_tigar.jpg uploaded successfully!","timestamp":"2024-01-30T17:04:21.488Z"}
+{"level":"info","message":"postUploadImage(): Image 1706634345643_kola.jpg uploaded successfully!","timestamp":"2024-01-30T17:05:45.672Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:05:50.505Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:05:50.510Z"}
+{"level":"info","message":"postUploadImage(): Image 1706634354656_1706632397961_tigar.jpg uploaded successfully!","timestamp":"2024-01-30T17:05:54.668Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:05:54.674Z"}
+{"level":"info","message":"postUploadImage(): Image 1706634364948_kola.jpg uploaded successfully!","timestamp":"2024-01-30T17:06:04.976Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:11:19.498Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:11:19.503Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:13:44.488Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:14:15.836Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:14:15.858Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:14:16.604Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:14:16.608Z"}
+{"level":"info","message":"postUploadImage(): Image 1706634863685_1706632397961_tigar.jpg uploaded successfully!","timestamp":"2024-01-30T17:14:23.710Z"}
+{"level":"info","message":"postUploadImage(): Image 1706634870613_1706632397961_tigar.jpg uploaded successfully!","timestamp":"2024-01-30T17:14:30.631Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:14:36.237Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:14:36.568Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706634870613_1706632397961_tigar.jpg removed successfully!","timestamp":"2024-01-30T17:14:38.394Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706634863685_1706632397961_tigar.jpg removed successfully!","timestamp":"2024-01-30T17:14:42.338Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:14:42.344Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706634364948_kola.jpg removed successfully!","timestamp":"2024-01-30T17:14:50.829Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706634354656_1706632397961_tigar.jpg removed successfully!","timestamp":"2024-01-30T17:14:54.446Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:14:54.452Z"}
+{"level":"info","message":"postUploadImage(): Image 1706634922942_tigar.jpg uploaded successfully!","timestamp":"2024-01-30T17:15:22.970Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:15:29.610Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:15:29.923Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706634922942_tigar.jpg removed successfully!","timestamp":"2024-01-30T17:15:32.528Z"}
+{"level":"info","message":"postUploadImage(): Image 1706635071441_kola.jpg uploaded successfully!","timestamp":"2024-01-30T17:17:51.468Z"}
+{"level":"error","message":"deleteRemoveImage(): Error removing an image: Error: ENOENT: no such file or directory, unlink 'C:\\Users\\AleksandarČernicin\\Desktop\\web-app-gallery\\server\\images\\1706634922942_tigar.jpg'","timestamp":"2024-01-30T17:18:28.750Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706634261464_tigar.jpg removed successfully!","timestamp":"2024-01-30T17:18:50.753Z"}
+{"level":"info","message":"postUploadImage(): Image 1706635178234_kola.jpg uploaded successfully!","timestamp":"2024-01-30T17:19:38.249Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:20:08.032Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:20:11.613Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:20:12.647Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:20:13.333Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:20:13.689Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:20:14.038Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:23:59.928Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:24:00.047Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706635178234_kola.jpg removed successfully!","timestamp":"2024-01-30T17:24:02.529Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:24:02.535Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706635071441_kola.jpg removed successfully!","timestamp":"2024-01-30T17:24:05.632Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706634345643_kola.jpg removed successfully!","timestamp":"2024-01-30T17:24:11.459Z"}
+{"level":"info","message":"postUploadImage(): Image 1706635458545_tigar.jpg uploaded successfully!","timestamp":"2024-01-30T17:24:18.563Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:29:17.258Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:29:17.422Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706635458545_tigar.jpg removed successfully!","timestamp":"2024-01-30T17:29:19.265Z"}
+{"level":"info","message":"postUploadImage(): Image 1706635801456_1706632397961_tigar.jpg uploaded successfully!","timestamp":"2024-01-30T17:30:01.474Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706626301516_kola.jpg removed successfully!","timestamp":"2024-01-30T17:30:25.052Z"}
+{"level":"info","message":"postUploadImage(): Image 1706635854738_kola.jpg uploaded successfully!","timestamp":"2024-01-30T17:30:54.750Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:31:00.707Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:31:01.016Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706635801456_1706632397961_tigar.jpg removed successfully!","timestamp":"2024-01-30T17:31:02.705Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:31:02.713Z"}
+{"level":"info","message":"postUploadImage(): Image 1706635867763_1706632397961_tigar.jpg uploaded successfully!","timestamp":"2024-01-30T17:31:07.787Z"}
+{"level":"info","message":"postUploadImage(): Image 1706635895181_tigar.jpg uploaded successfully!","timestamp":"2024-01-30T17:31:35.201Z"}
+{"level":"info","message":"postUploadImage(): Image 1706635968972_kola.jpg uploaded successfully!","timestamp":"2024-01-30T17:32:48.984Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:32:49.225Z"}
+{"level":"info","message":"postUploadImage(): Image 1706635977045_1706632397961_tigar.jpg uploaded successfully!","timestamp":"2024-01-30T17:32:57.055Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:32:57.399Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706635895181_tigar.jpg removed successfully!","timestamp":"2024-01-30T17:32:59.820Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:33:00.152Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706635977045_1706632397961_tigar.jpg removed successfully!","timestamp":"2024-01-30T17:33:03.114Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:33:03.432Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706635867763_1706632397961_tigar.jpg removed successfully!","timestamp":"2024-01-30T17:33:05.897Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:33:06.216Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706635968972_kola.jpg removed successfully!","timestamp":"2024-01-30T17:33:09.229Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:33:09.555Z"}
+{"level":"info","message":"postUploadImage(): Image 1706635994009_kola.jpg uploaded successfully!","timestamp":"2024-01-30T17:33:14.014Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:33:14.326Z"}
+{"level":"info","message":"postUploadImage(): Image 1706635996223_kola.jpg uploaded successfully!","timestamp":"2024-01-30T17:33:16.228Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:33:16.558Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706635996223_kola.jpg removed successfully!","timestamp":"2024-01-30T17:33:20.567Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:33:20.889Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706635994009_kola.jpg removed successfully!","timestamp":"2024-01-30T17:33:24.048Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:33:24.372Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:39:55.423Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:39:55.527Z"}
+{"level":"info","message":"postUploadImage(): Image 1706636402396_1706632397961_tigar.jpg uploaded successfully!","timestamp":"2024-01-30T17:40:02.407Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:40:02.724Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:51:28.457Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:51:28.594Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706636402396_1706632397961_tigar.jpg removed successfully!","timestamp":"2024-01-30T17:51:30.584Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:51:30.593Z"}
+{"level":"info","message":"postUploadImage(): Image 1706637096048_1706632397961_tigar.jpg uploaded successfully!","timestamp":"2024-01-30T17:51:36.071Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:51:36.306Z"}
+{"level":"error","message":"postRotateImage(): Image 1706637096048_1706632397961_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:51:40.068Z"}
+{"level":"error","message":"postRotateImage(): Image 1706637096048_1706632397961_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:51:42.220Z"}
+{"level":"error","message":"postRotateImage(): Image 1706637096048_1706632397961_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:52:17.175Z"}
+{"level":"error","message":"postRotateImage(): Image 1706637096048_1706632397961_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:52:34.073Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:55:13.282Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:55:13.387Z"}
+{"level":"info","message":"postRotateImage(): Image 1706637096048_1706632397961_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:55:15.826Z"}
+{"level":"info","message":"postRotateImage(): Image 1706637096048_1706632397961_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:55:18.764Z"}
+{"level":"info","message":"postRotateImage(): Image 1706637096048_1706632397961_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:55:20.863Z"}
+{"level":"info","message":"postUploadImage(): Image 1706637328685_tigar.jpg uploaded successfully!","timestamp":"2024-01-30T17:55:28.697Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:55:29.022Z"}
+{"level":"info","message":"getDownloadImage(): Image 1706635854738_kola.jpg downloaded successfully!","timestamp":"2024-01-30T17:55:32.833Z"}
+{"level":"info","message":"postRotateImage(): Image 1706637328685_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:55:37.245Z"}
+{"level":"info","message":"postRotateImage(): Image 1706637328685_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:55:39.232Z"}
+{"level":"info","message":"postRotateImage(): Image 1706626296342_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:55:42.565Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706626296342_tigar.jpg removed successfully!","timestamp":"2024-01-30T17:55:48.489Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:55:48.820Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706637096048_1706632397961_tigar.jpg removed successfully!","timestamp":"2024-01-30T17:55:52.423Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:55:52.742Z"}
+{"level":"info","message":"postUploadImage(): Image 1706637358538_tigar.jpg uploaded successfully!","timestamp":"2024-01-30T17:55:58.548Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:55:58.882Z"}
+{"level":"info","message":"getDownloadImage(): Image 1706637358538_tigar.jpg downloaded successfully!","timestamp":"2024-01-30T17:56:01.383Z"}
+{"level":"info","message":"postRotateImage(): Image 1706637358538_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:56:04.647Z"}
+{"level":"info","message":"postRotateImage(): Image 1706637358538_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:56:06.495Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706637358538_tigar.jpg removed successfully!","timestamp":"2024-01-30T17:56:08.545Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:56:08.795Z"}

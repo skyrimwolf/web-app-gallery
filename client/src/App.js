@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import axios from 'axios'
 
 const App = () => {
     const [imageList, setImageList] = useState([]) //init state as an empty list
     const [selectedImagePath, setSelectedImagePath] = useState()
     const [imageFile, setImageFile] = useState()
+    const inputFileRef = useRef(null)
 
     useEffect(() => {
       getImages() //load images at the start opening of the page 
@@ -37,7 +38,11 @@ const App = () => {
 
           await getImages() //refresh the list 
           //NOTE: another approach is to just push the newly uploaded image to the imageList, but I didn't do it because that way
-          //if we open 2 windows and we upload on each one some images, the first window won't get the images the second one uploaded (and vice versa)
+          //      if we open 2 windows and we upload on each one some images, the first window won't get the images the second one uploaded (and vice versa)
+
+          if (inputFileRef.current) { //get it reset
+            inputFileRef.current.value = ''
+          }
 
           console.log('Image uploaded successfully on path: ' + result.data.imagePath)
         }
@@ -122,6 +127,7 @@ const App = () => {
       <div>
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: 100}}>
         <input type="file"
+               ref={inputFileRef}
                onChange={(event) => {setImageFile(event.target.files[0])}} 
                accept=".jpg">
         </input>
