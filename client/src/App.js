@@ -16,9 +16,6 @@ const App = () => {
       try {
         const response = await axios.get('/images/get-all') //try to get all images (they are of structure {filename, path})
 
-        if (response.data) {console.log('Data: ' + response.data)}
-        else { console.log('Response: ' + response) }
-
         setImageList(response.data)
       }
       catch (err) {
@@ -73,7 +70,7 @@ const App = () => {
           window.URL.revokeObjectURL(url)
         }
         catch (err) {
-          console.log('handleDownload(): Error downloading file: ', err)
+          console.error('handleDownload(): Error downloading file: ', err)
         }
       }
       else {
@@ -92,7 +89,7 @@ const App = () => {
           alert('Image rotated successfully!')
         }
         catch (err) {
-          console.log('handleRotate(): Error rotating file: ', err)
+          console.error('handleRotate(): Error rotating file: ', err)
         }
       }
       else {
@@ -115,7 +112,7 @@ const App = () => {
           alert('Image deleted successfully!')
         }
         catch (err) {
-          console.log('handleDelete(): Error deleting file: ', err)
+          console.error('handleDelete(): Error deleting file: ', err)
         }
       }
       else {

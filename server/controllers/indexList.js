@@ -18,7 +18,6 @@ exports.initializeIndexList = async () => { //we can import this method to alway
         indexList = JSON.parse(indexData) //parse data from index.json to indexList
     }
     catch (err) {
-        //console.error('initializeIndexList(): Error initializing index list', err)
         indexList = [] //make it so it's empty
 
         logger.serverLogger.log('error', `initializeIndexList(): Error initializing index list: ${err}`) //log the given error
@@ -36,7 +35,6 @@ exports.updateIndexJson = async () => {
         await fs.writeFile(indexPath, indexListJsonString) //update the index.json file
     }
     catch (err) {
-        //console.error('updateIndexJson(): Error updating index json file!')
         logger.serverLogger.log('error', `updateIndexJson(): Error updating index json file: ${err}`) //log the given error
     }
 }

@@ -13,15 +13,7 @@ const imagesFolderPath = path.join(rootDir, 'images')
 //controller for getting all of the images from server
 exports.getGetAllImageNames = async (req, res, next) => {
     try {
-        console.log('first')
         const indexList = indexListUtil.currIndexList()
-
-        /*const filesWithPath = indexList.map((file) => { //create {filename, path} array of objects
-            const currImagePath = path.join(imagesFolderPath, file.filename);
-            return { filename: file.filename, path: currImagePath };
-        })*/
-
-        console.log('hello')
 
         const filesWithPath = await Promise.all(indexList.map(async (file) => { //since getGetAllImageNames is async, we have to await it
             const currImagePath = path.join(imagesFolderPath, file.filename)
@@ -29,21 +21,12 @@ exports.getGetAllImageNames = async (req, res, next) => {
             return { filename: file.filename, path: currImagePath }
         }))
 
-        console.log(filesWithPath)
-
-/*const filesWithPath = await Promise.all(indexList.map(async (file) => {
-            const currImagePath = path.join(imagesFolderPath, file.filename);
-            return { filename: file.filename, path: currImagePath };
-        })); */
-
         logger.serverLogger.log('info', 'getAllImages(): Successfully got list of image names with paths') //log the given action
         
         res.status(200) //OK
             .json(filesWithPath) //return filenames
     } 
     catch(err) {
-        //console.err('getAllImages(): Error fetching image list:', err)
-
         logger.serverLogger.log('error', `getAllImages(): Error fetching image list: ${err}`) //log the given error
         
         res.status(500) //Internal Server Error
@@ -70,8 +53,6 @@ exports.postUploadImage = async (req, res, next) => {
             .json({message: 'Image uploaded successfully!', imagePath: destPath})
     }
     catch (err) {
-        //console.error('postUploadImage(): Error uploading the image!')
-
         logger.serverLogger.log('error', `postUploadImage(): Error uploading the image: ${err}`) //log the given error
 
         res.status(500) //Internal Server Error
@@ -118,7 +99,6 @@ exports.postRotateImage = async (req, res, next) => { //indexList is not needed 
             .send('Image rotated succesfully!')
     }
     catch (err) {
-        //console.err('postRotateImage(): Error rotating an image:', err)
         logger.serverLogger.log('error', `postRotateImage(): Error rotating an image: ${err}`) //log the given error
 
         res.status(500) //Internal Server Error
@@ -144,7 +124,6 @@ exports.deleteRemoveImage = async (req, res, next) => {
             .send('Image removed successfully!')
     }
     catch (err) {
-        //console.error('deleteRemoveImage(): Error removing an image:', err)
         logger.serverLogger.log('error', `deleteRemoveImage(): Error removing an image: ${err}`) //log the given error
 
         res.status(500) //Internal Server Error
