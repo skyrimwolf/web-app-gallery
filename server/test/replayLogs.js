@@ -1,10 +1,23 @@
 const expect = require('chai').expect
 
-describe('Tests for replaying logs', () => { 
-    it ('should add two numbers', () => {
-        const num1 = 2
-        const num2 = 3
+const logger = require('../controllers/logger')
 
-        expect(num1 + num2).to.equal(5)
+describe('Tests for creating crops', () => { 
+    it ('should return a crop of 5 log rows', async () => { //done is used when we have async functions so that we don't accidentally get a false 'pass'
+        const startTime = new Date('2024-01-30T17:51:30.584Z')
+        const endTime = new Date('2024-01-30T17:51:40.068Z')
+
+        const crop = await logger.makeCropLog(startTime, endTime)
+
+        expect(crop).to.have.length(5)
+    })
+
+    it ('should return empty crop', async () => { //done is used when we have async functions so that we don't accidentally get a false 'pass'
+        const startTime = new Date('2024-01-30T17:51:40.068Z')
+        const endTime = new Date('2024-01-30T17:51:30.584Z')
+
+        const crop = await logger.makeCropLog(startTime, endTime)
+
+        expect(crop).to.have.length(0)
     })
  })
