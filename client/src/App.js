@@ -6,21 +6,29 @@ const App = () => {
     const [selectedImagePath, setSelectedImagePath] = useState()
 
     useEffect(() => {
-        axios.get('/images/get-all')
-              .then(images => setImageList(images.data)) //structure of data is {filename: '..', path: '..'}
-              .catch(err => console.error('Error fetching images: ', err))
+      const getImages = async () => {
+        try {
+          const response = await axios.get('/images/get-all') //try to get all images (they are of structure {filename, path})
+  
+          setImageList(response.data)
+        }
+        catch (err) {
+          console.error('getImages(): Error fetching images: ', err)
+        }
+      }
+      
+      getImages()
     }, []) //[] means it will be ran only at the first render
     
     const handleDownload = async () => {
       if (selectedImagePath) {
-        const selectedImageName = new URL(selectedImagePath).pathname.split('/').pop()
+        const selectedImageName = new URL(selectedImagePath).pathname.split('/').pop() //get name of the image
 
         try {
           const response = await axios.get(`/images/download/${selectedImageName}`, { responseType: 'blob' }) //get response from server async
-
           const url = window.URL.createObjectURL(new Blob([response.data])) //creates an object from data which was taken from the server
-
           const aTag = document.createElement('a') //creating a tag, setting it to download type, adding it to document.body and activating it
+
           aTag.href = url
           aTag.setAttribute('download', selectedImageName)
           document.body.appendChild(aTag)
@@ -29,13 +37,22 @@ const App = () => {
           window.URL.revokeObjectURL(url)
         }
         catch (err) {
-          console.log('handleDownload(): Error downloading file: ' + err)
+          console.log('handleDownload(): Error downloading file: ', err)
         }
       }
     }
 
-    const handleRotate = () => {
+    const handleRotate = async () => {
+      try {
+        const selectedImageName = new URL(selectedImagePath).pathname.split('/').pop() //get name of the image
+        
+        await axios.post(`/images/rotate/${selectedImageName}`)
 
+        alert('Image rotated successfully!')
+      }
+      catch (err) {
+        console.log('handleRotate(): Error rotating file: ', err)
+      }
     }
 
     const handleDelete = () => {
