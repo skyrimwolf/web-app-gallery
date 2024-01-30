@@ -7,29 +7,45 @@ const App = () => {
     const [imageFile, setImageFile] = useState()
 
     useEffect(() => {
-      const getImages = async () => {
-        try {
-          const response = await axios.get('/images/get-all') //try to get all images (they are of structure {filename, path})
-  
-          setImageList(response.data)
-        }
-        catch (err) {
-          console.error('getImages(): Error fetching images: ', err)
-        }
-      }
-      
-      getImages()
+      getImages() //load images at the start opening of the page 
     }, []) //[] means it will be ran only at the first render
     
-    const handleUpload = () => {
+    //function used to get all images
+    const getImages = async () => {
+      try {
+        const response = await axios.get('/images/get-all') //try to get all images (they are of structure {filename, path})
+
+        setImageList(response.data)
+      }
+      catch (err) {
+        console.error('getImages(): Error fetching images: ', err)
+      }
+    }
+
+    //function used to handle clicking on the upload button
+    const handleUpload = async () => {
       if (imageFile) {
-        //logic
+        const formData = new FormData()
+
+        formData.append('image', imageFile) //'image' is a key that server will look for!
+
+        try {
+          const result = await axios.post('/images/upload', formData) //sends data as post request to '/images/upload'
+
+          getImages() //refresh the list
+
+          console.log('Image uploaded successfully on path: ' + result.data.imagePath)
+        }
+        catch (err) {
+          console.error('handleUpload(): Error uploading an image: ', err)
+        }
       }
       else {
         alert('You must first choose an image you wish to upload!')
       }
     }
 
+    //function used to handle clicking on the download button
     const handleDownload = async () => {
       if (selectedImagePath) {
         const selectedImageName = new URL(selectedImagePath).pathname.split('/').pop() //get name of the image
@@ -55,6 +71,7 @@ const App = () => {
       }
     }
 
+    //function used to handle clicking on the rotate button
     const handleRotate = async () => {
       if (selectedImagePath) {
         try {
@@ -73,6 +90,7 @@ const App = () => {
       }
     }
 
+    //function used to handle clicking on the delete button
     const handleDelete = () => {
       if (selectedImagePath) {
         //logic
@@ -87,7 +105,7 @@ const App = () => {
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: 100}}>
         <input type="file"
                onChange={(event) => {setImageFile(event.target.files[0])}} 
-               accept="image/jpg">
+               accept=".jpg">
         </input>
           <button id='upload' onClick={handleUpload}>Upload</button>
           <button id='download' onClick={handleDownload}>Download</button>
