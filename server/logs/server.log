@@ -111,3 +111,43 @@
 {"level":"info","message":"postRotateImage(): Image 1706637358538_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:56:06.495Z"}
 {"level":"info","message":"deleteRemoveImage(): Image 1706637358538_tigar.jpg removed successfully!","timestamp":"2024-01-30T17:56:08.545Z"}
 {"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:56:08.795Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:01:49.512Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:02:08.497Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:02:25.497Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:06:05.506Z"}
+{"level":"info","message":"postUploadImage(): Image 1706637977074_kola.jpg uploaded successfully!","timestamp":"2024-01-30T18:06:17.079Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:06:17.413Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706637977074_kola.jpg removed successfully!","timestamp":"2024-01-30T18:06:28.069Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:06:28.385Z"}
+{"level":"error","message":"deleteRemoveImage(): Error removing an image: Error: ENOENT: no such file or directory, unlink 'C:\\Users\\AleksandarČernicin\\Desktop\\web-app-gallery\\server\\images\\1706637977074_kola.jpg'","timestamp":"2024-01-30T18:06:31.074Z"}
+{"level":"error","message":"postRotateImage(): Error rotating an image: Error: ENOENT: no such file or directory, open 'C:\\Users\\AleksandarČernicin\\Desktop\\web-app-gallery\\server\\images\\1706637977074_kola.jpg'","timestamp":"2024-01-30T18:06:33.596Z"}
+{"level":"error","message":"getDownloadImage(): Image not found: Error: ENOENT: no such file or directory, access 'C:\\Users\\AleksandarČernicin\\Desktop\\web-app-gallery\\server\\images\\1706637977074_kola.jpg'","timestamp":"2024-01-30T18:06:35.104Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:10:33.498Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:10:33.504Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:10:35.909Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:10:35.983Z"}
+{"level":"info","message":"postUploadImage(): Image 1706638248731_tigar.jpg uploaded successfully!","timestamp":"2024-01-30T18:10:48.741Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:10:48.749Z"}
+{"level":"info","message":"postRotateImage(): Image 1706638248731_tigar.jpg rotated successfully!","timestamp":"2024-01-30T18:10:52.218Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:11:39.486Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:11:44.012Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:11:44.061Z"}
+{"level":"info","message":"postUploadImage(): Image 1706638309810_tigar.jpg uploaded successfully!","timestamp":"2024-01-30T18:11:49.819Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:11:49.827Z"}
+{"level":"info","message":"getDownloadImage(): Image 1706638309810_tigar.jpg downloaded successfully!","timestamp":"2024-01-30T18:11:52.468Z"}
+{"level":"info","message":"postRotateImage(): Image 1706638309810_tigar.jpg rotated successfully!","timestamp":"2024-01-30T18:11:54.776Z"}
+{"level":"info","message":"postRotateImage(): Image 1706638309810_tigar.jpg rotated successfully!","timestamp":"2024-01-30T18:11:57.687Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706638309810_tigar.jpg removed successfully!","timestamp":"2024-01-30T18:11:59.490Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:11:59.825Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706637328685_tigar.jpg removed successfully!","timestamp":"2024-01-30T18:12:12.130Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:12:12.466Z"}
+{"level":"info","message":"postRotateImage(): Image 1706635854738_kola.jpg rotated successfully!","timestamp":"2024-01-30T18:12:21.105Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:54:52.171Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:54:52.309Z"}
+{"level":"info","message":"postUploadImage(): Image 1706640897406_kola.jpg uploaded successfully!","timestamp":"2024-01-30T18:54:57.414Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:54:57.729Z"}
+{"level":"info","message":"getDownloadImage(): Image 1706640897406_kola.jpg downloaded successfully!","timestamp":"2024-01-30T18:55:00.619Z"}
+{"level":"info","message":"postRotateImage(): Image 1706640897406_kola.jpg rotated successfully!","timestamp":"2024-01-30T18:55:03.084Z"}
+{"level":"info","message":"postRotateImage(): Image 1706640897406_kola.jpg rotated successfully!","timestamp":"2024-01-30T18:55:05.231Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706640897406_kola.jpg removed successfully!","timestamp":"2024-01-30T18:55:07.181Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:55:07.448Z"}

@@ -2,7 +2,7 @@ const fs = require('fs').promises
 const path = require('path')
 
 const rootDir = require('../util/path')
-const logger = require('./logger')
+const Logger = require('../models/logger')
 
 const indexPath = path.join(rootDir, 'index.json')
 
@@ -20,7 +20,7 @@ exports.initializeIndexList = async () => { //we can import this method to alway
     catch (err) {
         indexList = [] //make it so it's empty
 
-        logger.serverLogger.log('error', `initializeIndexList(): Error initializing index list: ${err}`) //log the given error
+        Logger.log('error', `initializeIndexList(): Error initializing index list: ${err}`) //log the given error
     }
 }
 
@@ -35,7 +35,7 @@ exports.updateIndexJson = async () => {
         await fs.writeFile(indexPath, indexListJsonString) //update the index.json file
     }
     catch (err) {
-        logger.serverLogger.log('error', `updateIndexJson(): Error updating index json file: ${err}`) //log the given error
+        Logger.log('error', `updateIndexJson(): Error updating index json file: ${err}`) //log the given error
     }
 }
 
