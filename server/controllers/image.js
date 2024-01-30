@@ -3,6 +3,7 @@ const path = require('path')
 const sharp = require('sharp')
 
 const rootDir = require('../util/path')
+const indexListUtil = require('../util/indexList')
 
 const imagesFolderPath = path.join(rootDir, 'images')
 
@@ -11,14 +12,13 @@ const imagesFolderPath = path.join(rootDir, 'images')
 //controller for getting all of the images from server
 exports.getGetAllImageNames = async (req, res, next) => {
     try {
-        const files = await fs.readdir(imagesFolderPath) //get filenames from imagesPath
-        
-        console.log('List of file names:') //will be deleted later
-        files.forEach((file) => console.log(file)) //will be deleted later
+        console.log('Proba1')
+        const indexList = indexListUtil.currIndexList()
+        console.log('Proba2')
 
-        const filesWithPath = files.map((file) => { //create {filename, path} array of objects
-            const currImagePath = path.join(imagesFolderPath, file);
-            return { filename: file, path: currImagePath };
+        const filesWithPath = indexList.map((file) => { //create {filename, path} array of objects
+            const currImagePath = path.join(imagesFolderPath, file.filename);
+            return { filename: file.filename, path: currImagePath };
         });
 
         res.status(200) //OK
@@ -33,15 +33,31 @@ exports.getGetAllImageNames = async (req, res, next) => {
 }
 
 //controller for uploading an image to server
-exports.postUploadImage = (req, res, next) => {
+exports.postUploadImage = async (req, res, next) => {
     const destPath = path.join(rootDir, 'images', req.file.filename)
 
-    res.status(200) //OK
-        .json({message: 'Image uploaded successfully!', imagePath: destPath})
+    indexListUtil.addToIndexList({filename: req.file.filename}) //add new object to indexList
+    //NOTE: I thought about putting in the imagePath, but since you'll be checking if everything works, for it to work would then require me to have the server running at all times
+    //because the path would have my URL from PC if i send you some images to be loaded upon first run (like pre-loaded data so you can see everything is working nicely)
+    //although, in reality, i'd put in the path and perhaps some other info as well
+    //if I explained it poorly, i'll explain it better on the interview :)
+
+    try {
+        indexListUtil.updateIndexJson() //try to update the index json file
+
+        res.status(200) //OK
+            .json({message: 'Image uploaded successfully!', imagePath: destPath})
+    }
+    catch (err) {
+        console.error('postUploadImage(): Error uploading the image!')
+
+        res.status(500) //Internal Server Error
+            .send('Internal Server Error!')
+    }
 }
 
 //controller for downloading an image from server
-exports.getDownloadImage = async (req, res, next) => {
+exports.getDownloadImage = async (req, res, next) => { //indexList is not needed here
     const imageId = req.params.imageId
     const imagePath = path.join(rootDir, 'images', imageId)
 
@@ -54,12 +70,12 @@ exports.getDownloadImage = async (req, res, next) => {
     }
     catch (err) {
         res.status(404) //Not Found
-            .send('downloadImage(): Image not found!')
+            .send('getDownloadImage(): Image not found!')
     }
 }
 
 //controller for rotating an image on server
-exports.postRotateImage = async (req, res, next) => {
+exports.postRotateImage = async (req, res, next) => { //indexList is not needed here
     const imageId = req.params.imageId
     const imagePath = path.join(imagesFolderPath, imageId)
 
@@ -73,7 +89,7 @@ exports.postRotateImage = async (req, res, next) => {
             .send('Image rotated succesfully!')
     }
     catch (err) {
-        console.err('rotateImage(): Error rotating an image:', err)
+        console.err('postRotateImage(): Error rotating an image:', err)
 
         res.status(500) //Internal Server Error
             .send('Internal Server Error!')
@@ -88,11 +104,15 @@ exports.deleteRemoveImage = async (req, res, next) => {
 
         await fs.unlink(imagePath) //unlink is used to remove the image from the server
 
+        indexListUtil.removeFromIndexList(imageId) //remove from indexList
+
+        indexListUtil.updateIndexJson() //try to update the index json file
+
         res.status(200) //OK
             .send('Image removed successfully!')
     }
     catch (err) {
-        console.err('rotateImage(): Error rotating an image:', err)
+        console.error('deleteRemoveImage(): Error removing an image:', err)
 
         res.status(500) //Internal Server Error
             .send('Internal Server Error!')

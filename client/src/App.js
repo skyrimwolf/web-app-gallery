@@ -15,6 +15,9 @@ const App = () => {
       try {
         const response = await axios.get('/images/get-all') //try to get all images (they are of structure {filename, path})
 
+        if (response.data) {console.log('Data: ' + response.data)}
+        else { console.log('Response: ' + response) }
+
         setImageList(response.data)
       }
       catch (err) {
@@ -32,7 +35,7 @@ const App = () => {
         try {
           const result = await axios.post('/images/upload', formData) //sends data as post request to '/images/upload'
 
-          getImages() //refresh the list 
+          await getImages() //refresh the list 
           //NOTE: another approach is to just push the newly uploaded image to the imageList, but I didn't do it because that way
           //if we open 2 windows and we upload on each one some images, the first window won't get the images the second one uploaded (and vice versa)
 
@@ -100,7 +103,7 @@ const App = () => {
 
           await axios.delete(`/images/remove/${selectedImageName}`)
 
-          getImages() //refresh the list 
+          await getImages() //refresh the list 
           //NOTE: another approach is to just pop the newly deleted image from the imageList, but I didn't do it because that way
           //if we open 2 windows and we delete on each one some images, the first window won't see the changes made in the second one (and vice versa)
 
