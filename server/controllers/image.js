@@ -16,8 +16,13 @@ exports.getGetAllImageNames = async (req, res, next) => {
         console.log('List of file names:') //will be deleted later
         files.forEach((file) => console.log(file)) //will be deleted later
 
+        const filesWithPath = files.map((file) => { //create {filename, path} array of objects
+            const currImagePath = path.join(imagesFolderPath, file);
+            return { filename: file, path: currImagePath };
+        });
+
         res.status(200) //OK
-            .json(files) //return filenames
+            .json(filesWithPath) //return filenames
     } 
     catch(err) {
         console.err('getAllImages(): Error fetching image list:', err)
@@ -43,7 +48,7 @@ exports.getDownloadImage = async (req, res, next) => {
 
         res.setHeader('Content-Type', 'image/jpg') //we need to inform the client that we're sending jpg file
         res.status(200) //OK
-            .sendFile(imagePath, {root: imagesFolderPath})
+            .sendFile(imagePath)
     }
     catch (err) {
         res.status(404) //Not Found

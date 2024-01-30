@@ -3,20 +3,35 @@ import axios from 'axios'
 
 const App = () => {
     const [imageList, setImageList] = useState([]) //init state as an empty list
-    const [selectedImage, setSelectedImage] = useState()
+    const [selectedImagePath, setSelectedImagePath] = useState()
 
     useEffect(() => {
         axios.get('/images/get-all')
-                .then(images => setImageList(images.data))
-                .catch(err => console.error('Error fetching images: ', err))
+              .then(images => setImageList(images.data)) //structure of data is {filename: '..', path: '..'}
+              .catch(err => console.error('Error fetching images: ', err))
     }, []) //[] means it will be ran only at the first render
     
-    const handleDownload = () => {
-      axios.get(`/images/download/${selectedImage}`)
-            .then(() => {
-              //logic
-            })
-            .catch(err => console.error('Error downloading image: ', err))
+    const handleDownload = async () => {
+      if (selectedImagePath) {
+        const selectedImageName = new URL(selectedImagePath).pathname.split('/').pop()
+
+        try {
+          const response = await axios.get(`/images/download/${selectedImageName}`, { responseType: 'blob' }) //get response from server async
+
+          const url = window.URL.createObjectURL(new Blob([response.data])) //creates an object from data which was taken from the server
+
+          const aTag = document.createElement('a') //creating a tag, setting it to download type, adding it to document.body and activating it
+          aTag.href = url
+          aTag.setAttribute('download', selectedImageName)
+          document.body.appendChild(aTag)
+          aTag.click()
+          document.body.removeChild(aTag) //releasing resources after it was done
+          window.URL.revokeObjectURL(url)
+        }
+        catch (err) {
+          console.log('handleDownload(): Error downloading file: ' + err)
+        }
+      }
     }
 
     const handleRotate = () => {
@@ -36,14 +51,14 @@ const App = () => {
         </div>
 
         <div style={{maxHeight: '300px', overflowY: 'auto'}}>
-            {imageList.map(imageName => (
-                <div key={imageName} style={{ display: 'flex', alignItems: 'center' }}>
+            {imageList.map(image => (
+                <div key={image.filename} style={{ display: 'flex', alignItems: 'center' }}>
                     <input type='radio' 
-                           id={imageName} 
+                           id={image.filename} 
                            name='imageGroup'
-                           value={imageName} 
-                           onChange={() => setSelectedImage(imageName)}/>
-                    <label htmlFor={imageName}>{imageName}</label>
+                           value={image.filename} 
+                           onChange={() => setSelectedImagePath(image.path)}/>
+                    <label htmlFor={image.filename}>{image.filename}</label>
                 </div>
             ))}
         </div>
