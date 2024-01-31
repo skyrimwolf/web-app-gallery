@@ -85,10 +85,10 @@
 {"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:51:30.593Z"}
 {"level":"info","message":"postUploadImage(): Image 1706637096048_1706632397961_tigar.jpg uploaded successfully!","timestamp":"2024-01-30T17:51:36.071Z"}
 {"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:51:36.306Z"}
-{"level":"error","message":"postRotateImage(): Image 1706637096048_1706632397961_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:51:40.068Z"}
-{"level":"error","message":"postRotateImage(): Image 1706637096048_1706632397961_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:51:42.220Z"}
-{"level":"error","message":"postRotateImage(): Image 1706637096048_1706632397961_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:52:17.175Z"}
-{"level":"error","message":"postRotateImage(): Image 1706637096048_1706632397961_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:52:34.073Z"}
+{"level":"info","message":"postRotateImage(): Image 1706637096048_1706632397961_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:51:40.068Z"}
+{"level":"info","message":"postRotateImage(): Image 1706637096048_1706632397961_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:51:42.220Z"}
+{"level":"info","message":"postRotateImage(): Image 1706637096048_1706632397961_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:52:17.175Z"}
+{"level":"info","message":"postRotateImage(): Image 1706637096048_1706632397961_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:52:34.073Z"}
 {"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:55:13.282Z"}
 {"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T17:55:13.387Z"}
 {"level":"info","message":"postRotateImage(): Image 1706637096048_1706632397961_tigar.jpg rotated successfully!","timestamp":"2024-01-30T17:55:15.826Z"}
