@@ -3,3 +3,13 @@
 {"level":"error","message":"getDownloadImage(): Image not found: Error: ENOENT: no such file or directory, access 'C:\\Users\\AleksandarČernicin\\Desktop\\web-app-gallery\\server\\images\\1706637977074_kola.jpg'","timestamp":"2024-01-30T18:06:35.104Z"}
 {"level":"error","message":"getAllImages(): Error fetching image list: TypeError: res.status is not a function","timestamp":"2024-01-31T02:49:09.340Z"}
 {"level":"error","message":"getAllImages(): Error fetching image list: TypeError: res.status is not a function","timestamp":"2024-01-31T02:49:09.557Z"}
+{"level":"error","message":"getAllImages(): Error fetching image list: TypeError: res.status is not a function","timestamp":"2024-01-31T13:20:16.481Z"}
+{"level":"error","message":"getAllImages(): Error fetching image list: TypeError: res.status is not a function","timestamp":"2024-01-31T13:20:16.482Z"}
+{"level":"error","message":"getAllImages(): Error fetching image list: TypeError: res.status is not a function","timestamp":"2024-01-31T13:20:38.134Z"}
+{"level":"error","message":"getAllImages(): Error fetching image list: TypeError: res.status is not a function","timestamp":"2024-01-31T13:20:38.135Z"}
+{"level":"error","message":"getAllImages(): Error fetching image list: TypeError: res.status is not a function","timestamp":"2024-01-31T13:21:04.620Z"}
+{"level":"error","message":"getAllImages(): Error fetching image list: TypeError: res.status is not a function","timestamp":"2024-01-31T13:21:04.621Z"}
+{"level":"error","message":"getAllImages(): Error fetching image list: TypeError: res.status is not a function","timestamp":"2024-01-31T13:21:33.059Z"}
+{"level":"error","message":"getAllImages(): Error fetching image list: TypeError: res.status is not a function","timestamp":"2024-01-31T13:21:33.061Z"}
+{"level":"error","message":"getAllImages(): Error fetching image list: TypeError: res.status is not a function","timestamp":"2024-01-31T13:22:24.194Z"}
+{"level":"error","message":"getAllImages(): Error fetching image list: TypeError: res.status is not a function","timestamp":"2024-01-31T13:22:24.195Z"}

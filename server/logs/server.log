@@ -150,8 +150,3 @@
 {"level":"info","message":"postRotateImage(): Image 1706640897406_kola.jpg rotated successfully!","timestamp":"2024-01-30T18:55:03.084Z"}
 {"level":"info","message":"postRotateImage(): Image 1706640897406_kola.jpg rotated successfully!","timestamp":"2024-01-30T18:55:05.231Z"}
 {"level":"info","message":"deleteRemoveImage(): Image 1706640897406_kola.jpg removed successfully!","timestamp":"2024-01-30T18:55:07.181Z"}
-{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-30T18:55:07.448Z"}
-{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-31T02:49:09.338Z"}
-{"level":"error","message":"getAllImages(): Error fetching image list: TypeError: res.status is not a function","timestamp":"2024-01-31T02:49:09.340Z"}
-{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-01-31T02:49:09.556Z"}
-{"level":"error","message":"getAllImages(): Error fetching image list: TypeError: res.status is not a function","timestamp":"2024-01-31T02:49:09.557Z"}
