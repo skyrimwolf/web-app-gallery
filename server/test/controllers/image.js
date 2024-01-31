@@ -6,6 +6,9 @@ const imageController = require('../../controllers/image')
 const indexController = require('../../controllers/indexList')
 const Logger = require('../../models/logger')
 
+//NOTE: these functions do test only one specific controller, but they are neccessary for replaying logs without making any changes
+
+//function to test getting all images
 exports.stubGetAllImages = async () => { //stub function to test
     const logStub = sinon.stub(Logger, 'log') //mocks a Logger.log() function so it doesn't write in the log file during testing
 
@@ -29,6 +32,7 @@ exports.stubGetAllImages = async () => { //stub function to test
     logStub.restore() //restores original logging function
 }
 
+//function to test uploading image
 exports.stubUploadImage = async (imageId, resMock) => {
     const logStub = sinon.stub(Logger, 'log') //mocks a Logger.log() function so it doesn't write in the log file during testing
     
@@ -67,14 +71,62 @@ exports.stubUploadImage = async (imageId, resMock) => {
     sinon.restore()
 }
 
+//function to test downloading image
 exports.stubDownloadImage = async (imageId, doesImageExist) => {
     const logStub = sinon.stub(Logger, 'log') //mocks a Logger.log() function so it doesn't write in the log file during testing
     
-    
+    const req = { //req body sent
+        params: {
+          imageId: imageId
+        }
+    }
+
+    const res = { //prepare res to send
+        statusCode: 500,
+        message: null,
+        image: null,
+        headerName: null,
+        headerValue: null,
+        status: function(code) {
+            this.statusCode = code
+            return this
+        },
+        send: function(data) {
+            this.message = data
+        },
+        sendFile: function(data) {
+            this.image = data
+        },
+        setHeader: function(data) {
+            this.headerName = data.name,
+            this.headerValue = data.value
+        }
+    }
+
+    const proba = await imageController.getDownloadImage(req, res, () => {})
+
+    if (doesImageExist) { //if there exists an image, it should resolve
+        sinon.stub(fs, 'access').resolves()
+
+        expect(res.headerName).to.equal('Content-Type')
+        expect(res.headerValue).to.equal('image/jpg')
+        expect(res.statusCode).to.equal(200)
+        expect(res.image).to.be.not.null
+    }
+    else { //if there doesn't exist an image, it should reject
+        sinon.stub(fs, 'access').rejects()
+
+        expect(res.statusCode).to.equal(404)
+        expect(res.message).to.equal('getDownloadImage(): Image not found!')
+    }
+
+    expect(logStub.calledOnce).to.be.true
     
     logStub.restore() //restores original logging function
+    sinon.restore() //restore fs  
 }
 
+//function to test rotating image
 exports.stubRotateImage = async (imageId) => {
     const logStub = sinon.stub(Logger, 'log') //mocks a Logger.log() function so it doesn't write in the log file during testing
     
@@ -83,6 +135,7 @@ exports.stubRotateImage = async (imageId) => {
     logStub.restore() //restores original logging function
 }
 
+//function to test removing image
 exports.stubRemoveImage = async (imageId, indexList, doesImageExist) => {
     const logStub = sinon.stub(Logger, 'log') //mocks a Logger.log() function so it doesn't write in the log file during testing
     

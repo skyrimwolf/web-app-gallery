@@ -73,6 +73,7 @@ let indexList = []
                     break
                 case 'getDownloadImage':
                     console.log('download')
+                    await testController.stubDownloadImage(imageName, doesImageExist)
                     break
                 case 'postRotateImage':
                     console.log('rotate')
