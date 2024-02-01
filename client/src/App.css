@@ -1,3 +1,14 @@
+html { /*targets html tags (index.html), put on top as it is the base of everything*/
+  font-size: 50%;
+  font-family: "sans-serif";
+  height: 100%;
+}
+
+* { /*targets all elements, put on top as it is the base of everything*/
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +46,97 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.background {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  height: 100vh;
+  background-color: #bcc3f1;
+}
+
+.flex {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list {
+  margin-left: 10rem;
+  height: 45rem;
+  display: inline-block;
+  width: 50%;
+  overflow-y: scroll;
+  font-size: 2.2rem;
+  background-color: #3c075382;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  border-radius: 1rem;
+  scrollbar-color: #910a67 #3c0753;
+  scrollbar-width: thin;
+}
+
+.actionButtons {
+  margin-right: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100;
+  gap: 1rem;
+  width: 25rem;
+}
+
+.button {
+  font-size: 2.4rem;
+  width: 100%;
+  height: 100%;
+  background-color: #3c0753;
+  color: #f3f0ff;
+  border-radius: 1rem;
+}
+
+.button:hover {
+  background-color: #720455;
+  cursor: pointer;
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.8rem;
+  color: #b197fc;
+}
+
+.image:hover {
+  color: #f3f0ff;
+}
+
+/*doing some styling for input file*/
+
+input[type="file"]::file-selector-button {
+  border-radius: 4px;
+  height: 40px;
+  cursor: pointer;
+  background-color: white;
+  border: #000000;
+  margin-right: 16px;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #f3f4f6;
+}
+
+input[type="file"]::file-selector-button:active {
+  background-color: #e5e7eb;
+}
+
+/*fixing choose file button*/
+
+.chooseFile {
+  position: absolute;
+  top: 10%;
+  left: 45%;
 }

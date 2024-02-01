@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 import axios from 'axios'
+import './App.css'
 
 const App = () => {
     const [imageList, setImageList] = useState([]) //init state as an empty list
@@ -108,7 +109,7 @@ const App = () => {
 
           await getImages() //refresh the list 
           //NOTE: another approach is to just pop the newly deleted image from the imageList, but I didn't do it because that way
-          //if we open 2 windows and we delete on each one some images, the first window won't see the changes made in the second one (and vice versa)
+          //      if we open 2 windows and we delete on each one some images, the first window won't see the changes made in the second one (and vice versa)
 
           alert('Image deleted successfully!')
 
@@ -124,30 +125,35 @@ const App = () => {
     }
 
     return (
-      <div>
-        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: 100}}>
-        <input type="file"
-               ref={inputFileRef}
-               onChange={(event) => {setImageFile(event.target.files[0])}} 
-               accept=".jpg">
-        </input>
-          <button id='upload' onClick={handleUpload}>Upload</button>
-          <button id='download' onClick={handleDownload}>Download</button>
-          <button id='rotate' onClick={handleRotate}>Rotate</button>
-          <button id='delete' onClick={handleDelete}>Delete</button>
-        </div>
-
-        <div style={{maxHeight: '300px', overflowY: 'auto'}}>
+      <div className='background'>
+        <div className='flex'>
+          <div className='chooseFile'>
+            <input 
+              input type="file"
+              ref={inputFileRef}
+              onChange={(event) => {setImageFile(event.target.files[0])}} 
+              accept=".jpg">
+            </input>
+          </div>
+          <div className='list'>
             {imageList.map(image => (
-                <div key={image.filename} style={{ display: 'flex', alignItems: 'center' }}>
-                    <input type='radio' 
-                           id={image.filename} 
-                           name='imageGroup'
-                           value={image.filename} 
-                           onChange={() => setSelectedImagePath(image.path)}/>
-                    <label htmlFor={image.filename}>{image.filename}</label>
-                </div>
+              <div className='image' key={image.filename}>
+                <input type='radio' 
+                       id={image.filename} 
+                       name='imageGroup'
+                       value={image.filename} 
+                       onChange={() => setSelectedImagePath(image.path)}/>
+                         
+                <label htmlFor={image.filename}>{image.filename}</label>
+              </div>
             ))}
+          </div>
+          <div className='actionButtons'>
+            <button className='button' id='upload' onClick={handleUpload}>Upload</button>
+            <button className='button' id='download' onClick={handleDownload}>Download</button>
+            <button className='button' id='rotate' onClick={handleRotate}>Rotate</button>
+            <button className='button' id='delete' onClick={handleDelete}>Delete</button>
+          </div>
         </div>
       </div>
     );
