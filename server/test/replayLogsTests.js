@@ -27,6 +27,6 @@ let indexList = []
 
         const logs = await logger.makeCropLog(startTime, endTime) //5 rows
 
-        await logReplayer(indexList, logs, {}, {}) //the two arguments are picture name and if it exists in the index.json (if it doesn't, only uploading will be successful)
+        await logReplayer(indexList, logs, {}, {}, 2) //the two {} arguments are picture name and if it exists in the index.json (if it doesn't, only uploading will be successful)
     })
  })

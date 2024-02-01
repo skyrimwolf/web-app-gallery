@@ -23,21 +23,18 @@ const switcher = async (functionName, imageName, doesImageExist, indexList) => {
 }
 
 //function that goes through logs and replays them
-exports.logReplayer = async (indexList, logs, imageName, doesImageExist) => {
+exports.logReplayer = async (indexList, logs, imageName, doesImageExist, scaleFactor) => {
     let previousTimestamp = null //needed to get time difference (delay)
 
     for(let i = 0; i < logs.length; i++) {
         const currentTimestamp = new Date(logs[i].timestamp).getTime() //gets time from timestamp on a log
-        const delay = previousTimestamp ? currentTimestamp - previousTimestamp : 0 //ternary operator, if prev is null, delay is 0   
         const functionName = logs[i].message.substring(0, logs[i].message.indexOf('('))
 
-        //let imageName = ''
-        
-        //if it's undefined or if it's wrong input, set it to false (i've done it like this so that the user can choose if he wants to override all picture names
-        //and just go for picture actions with a preset image and if it exists boolean value)
-        // if (typeof doesImageExist !== 'boolean') { 
-        //     doesImageExist = false
-        // }
+        if (typeof scaleFactor !== 'number' && scaleFactor !== 0) { //if scaleFactor is undefined or the input format is wrong, set it to 1 (also, division by 0 is not possible!)
+            scaleFactor = 1
+        }
+
+        const delay = previousTimestamp ? (currentTimestamp - previousTimestamp) / scaleFactor : 0 //ternary operator, if prev is null, delay is 0   
 
         //enter only if the user preset values are undefined (if they are defined, those are overriding values and this shouldn't be executed) and the function isn't called getAllImages
         if (typeof doesImageExist !== 'boolean' && typeof imageName !== 'string' && functionName !== 'getAllImages') {
@@ -47,7 +44,7 @@ exports.logReplayer = async (indexList, logs, imageName, doesImageExist) => {
             doesImageExist = indexList.some(image => image.filename === imageName) //check if an image is inside of the indexList
         }
 
-        await sleep(delay) //wait for delay time
+        await sleep(delay) //wait for delay time with possibility of scaling it
 
         await switcher(functionName, imageName, doesImageExist, indexList) //execute the given replayed action
 
