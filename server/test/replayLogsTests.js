@@ -1,5 +1,3 @@
-const sinon = require('sinon')
-
 const indexController = require('../controllers/indexList')
 const testController = require('./controllers/image')
 const logger = require('../controllers/logger')
@@ -69,14 +67,15 @@ let indexList = []
                     break
                 case 'postUploadImage':
                     console.log('upload')
-                    await testController.stubUploadImage(imageName, resMock)
+                    await testController.stubUploadImage(imageName)
                     break
                 case 'getDownloadImage':
                     console.log('download')
-                    await testController.stubDownloadImage(imageName, doesImageExist)
+                    await testController.stubDownloadImage(imageName, doesImageExist) //handles both if the exists or not!
                     break
                 case 'postRotateImage':
                     console.log('rotate')
+                    await testController.stubRotateImage(imageName, doesImageExist) //handles both if the exists or not!
                     break
                 case 'deleteRemoveImage':
                     console.log('delete')

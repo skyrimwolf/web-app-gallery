@@ -150,3 +150,17 @@
 {"level":"info","message":"postRotateImage(): Image 1706640897406_kola.jpg rotated successfully!","timestamp":"2024-01-30T18:55:03.084Z"}
 {"level":"info","message":"postRotateImage(): Image 1706640897406_kola.jpg rotated successfully!","timestamp":"2024-01-30T18:55:05.231Z"}
 {"level":"info","message":"deleteRemoveImage(): Image 1706640897406_kola.jpg removed successfully!","timestamp":"2024-01-30T18:55:07.181Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-01T09:58:56.391Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-01T09:58:56.484Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-01T10:09:40.586Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-01T10:11:37.569Z"}
+{"level":"info","message":"postUploadImage(): Image 1706782495166_macka.jpg uploaded successfully!","timestamp":"2024-02-01T10:14:55.169Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-01T10:14:55.428Z"}
+{"level":"info","message":"postUploadImage(): Image 1706782556758_macka.jpg uploaded successfully!","timestamp":"2024-02-01T10:15:56.760Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-01T10:15:57.023Z"}
+{"level":"info","message":"postRotateImage(): Image 1706782556758_macka.jpg rotated successfully!","timestamp":"2024-02-01T10:15:59.100Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-01T10:20:43.565Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-01T10:21:18.566Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-01T10:21:33.562Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-01T10:23:41.569Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-01T10:23:50.559Z"}

@@ -12,7 +12,7 @@ describe('Tests for creating crops', () => {
         expect(crop).to.have.length(5)
     })
 
-    it ('should return empty crop', async () => { //done is used when we have async functions so that we don't accidentally get a false 'pass'
+    it ('should return an empty crop', async () => { //done is used when we have async functions so that we don't accidentally get a false 'pass'
         const crop = await logger.makeCropLog(endTime, startTime)
 
         expect(crop).to.have.length(0)

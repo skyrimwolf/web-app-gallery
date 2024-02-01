@@ -96,7 +96,7 @@ exports.postRotateImage = async (req, res, next) => { //indexList is not needed 
         Logger.log('info', `postRotateImage(): Image ${imageId} rotated successfully!`) //log the given action
 
         res.status(200) //OK
-            .send('Image rotated succesfully!')
+            .send('Image rotated successfully!')
     }
     catch (err) {
         Logger.log('error', `postRotateImage(): Error rotating an image: ${err}`) //log the given error
