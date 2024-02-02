@@ -24,20 +24,6 @@ Server should be running without problem
 
 ------------------------------------------------------------------------------------------------
 
-                                    #Running the Tests
-
-
-In the \server directory, open your terminal and type:
-
-
-```npm test```
-
-
-
-Tests should be running without problem
-
-------------------------------------------------------------------------------------------------
-
                                     #Running the Client
 
 
@@ -49,7 +35,7 @@ In the \client directory, open your terminal and type:
 
 IMPORTANT: 
 
-There were some problems that I could not fix, so, if you get an error about 'react-scripts' not being recognized, first type in:
+There were some unclear problems that I could not fix, so, if you get an error about 'react-scripts' not being recognized, first type in:
 
 
 ```npm install react-scripts --save```
@@ -62,5 +48,31 @@ and then
 
 
 Client should be running without problem now.
+
+------------------------------------------------------------------------------------------------
+                                    #Running the Tests
+
+
+In the \server directory, open your terminal and type:
+
+
+```npm test```
+
+
+Tests should be running without problem
+
+------------------------------------------------------------------------------------------------
+
+                                    #Running the Tests in Parallel
+
+
+In the \server directory, open your terminal and type:
+
+
+```npm run test:parallel```
+
+
+Tests should be running without problem in parallel. 
+In package.json, it is set up to 3 parallel processes for all of the tests.
 
 ------------------------------------------------------------------------------------------------

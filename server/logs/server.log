@@ -267,3 +267,16 @@
 {"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T18:25:39.988Z"}
 {"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T18:40:52.582Z"}
 {"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T18:41:13.319Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T22:27:41.194Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T22:27:41.323Z"}
+{"level":"info","message":"postUploadImage(): Image tigar_1.jpg uploaded successfully!","timestamp":"2024-02-02T22:28:00.648Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T22:28:00.840Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T22:28:01.203Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T22:28:02.299Z"}
+{"level":"info","message":"getDownloadImage(): Image tigar_1.jpg downloaded successfully!","timestamp":"2024-02-02T22:28:04.842Z"}
+{"level":"info","message":"postRotateImage(): Image tigar_1.jpg rotated successfully!","timestamp":"2024-02-02T22:28:11.640Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T22:28:21.981Z"}
+{"level":"info","message":"postRotateImage(): Image tigar_1.jpg rotated successfully!","timestamp":"2024-02-02T22:28:26.791Z"}
+{"level":"info","message":"deleteRemoveImage(): Image tigar_1.jpg removed successfully!","timestamp":"2024-02-02T22:28:31.213Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T22:28:31.526Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T22:28:41.191Z"}
