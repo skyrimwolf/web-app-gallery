@@ -16,7 +16,7 @@ and this README.md file
 In the \server directory, open your terminal and type:
 
 
-npm start
+```npm start```
 
 
 
@@ -30,7 +30,7 @@ Server should be running without problem
 In the \server directory, open your terminal and type:
 
 
-npm test
+```npm test```
 
 
 
@@ -44,7 +44,7 @@ Tests should be running without problem
 In the \client directory, open your terminal and type:
 
 
-npm start
+```npm start```
 
 
 IMPORTANT: 
@@ -52,13 +52,13 @@ IMPORTANT:
 There were some problems that I could not fix, so, if you get an error about 'react-scripts' not being recognized, first type in:
 
 
-npm install react-scripts --save
+```npm install react-scripts --save```
 
 
 and then
 
 
-npm start
+```npm start```
 
 
 Client should be running without problem now.
