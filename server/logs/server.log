@@ -262,3 +262,6 @@
 {"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:41:42.434Z"}
 {"level":"info","message":"postUploadImage(): Image macka_2.jpg uploaded successfully!","timestamp":"2024-02-02T16:41:48.015Z"}
 {"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:41:48.324Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T18:25:19.009Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T18:25:29.317Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T18:25:39.988Z"}

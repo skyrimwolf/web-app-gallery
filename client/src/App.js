@@ -10,12 +10,18 @@ const App = () => {
 
     useEffect(() => {
       getImages() //load images at the start opening of the page 
-    }, []) //[] means it will be ran only at the first render
+
+      const intervalId = setInterval(() => {                                                                        //refresh every 20 seconds on its own
+        getImages()
+      }, 20000)
+
+      return () => clearInterval(intervalId)                                                                        //cleanup
+    }, [])                                                                                                          //[] means it will be ran only at the first render
     
     //function used to get all images
     const getImages = async () => {
       try {
-        const response = await axios.get('/images/get-all') //try to get all images (they are of structure {filename, path})
+        const response = await axios.get('/images/get-all')                                                         //try to get all images (they are of structure {filename, path})
 
         setImageList(response.data)
       }
@@ -29,16 +35,17 @@ const App = () => {
       if (imageFile) {
         const formData = new FormData()
 
-        formData.append('image', imageFile) //'image' is a key that server will look for!
+        formData.append('image', imageFile)                                                                         //'image' is a key that server will look for!
 
         try {
-          const result = await axios.post('/images/upload', formData) //sends data as post request to '/images/upload'
+          const result = await axios.post('/images/upload', formData)                                               //sends data as post request to '/images/upload'
 
-          await getImages() //refresh the list 
+          await getImages()                                                                                         //refresh the list 
+
           //NOTE: another approach is to just push the newly uploaded image to the imageList, but I didn't do it because that way
           //      if we open 2 windows and we upload on each one some images, the first window won't get the images the second one uploaded (and vice versa)
 
-          if (inputFileRef.current) { //get it reset
+          if (inputFileRef.current) {                                                                               //get it reset
             inputFileRef.current.value = ''
             setImageFile('')
           }
@@ -57,18 +64,18 @@ const App = () => {
     //function used to handle clicking on the download button
     const handleDownload = async () => {
       if (selectedImagePath !== '') {
-        const selectedImageName = new URL(selectedImagePath).pathname.split('/').pop() //get name of the image
+        const selectedImageName = new URL(selectedImagePath).pathname.split('/').pop()                              //get name of the image
 
         try {
-          const response = await axios.get(`/images/download/${selectedImageName}`, { responseType: 'blob' }) //get response from server async
-          const url = window.URL.createObjectURL(new Blob([response.data])) //creates an object from data which was taken from the server
-          const aTag = document.createElement('a') //creating a tag, setting it to download type, adding it to document.body and activating it
+          const response = await axios.get(`/images/download/${selectedImageName}`, { responseType: 'blob' })       //get response from server async
+          const url = window.URL.createObjectURL(new Blob([response.data]))                                         //creates an object from data which was taken from the server
+          const aTag = document.createElement('a')                                                                  //creating a tag, setting it to download type, adding it to document.body and activating it
 
           aTag.href = url
           aTag.setAttribute('download', selectedImageName)
           document.body.appendChild(aTag)
           aTag.click()
-          document.body.removeChild(aTag) //releasing resources after it was done
+          document.body.removeChild(aTag)                                                                           //releasing resources after it was done
           window.URL.revokeObjectURL(url)
         }
         catch (err) {
@@ -84,7 +91,7 @@ const App = () => {
     const handleRotate = async () => {
       if (selectedImagePath !== '') {
         try {
-          const selectedImageName = new URL(selectedImagePath).pathname.split('/').pop() //get name of the image
+          const selectedImageName = new URL(selectedImagePath).pathname.split('/').pop()                            //get name of the image
           
           await axios.post(`/images/rotate/${selectedImageName}`)
   
@@ -103,11 +110,12 @@ const App = () => {
     const handleDelete = async () => {
       if (selectedImagePath !== '') {
         try {
-          const selectedImageName = new URL(selectedImagePath).pathname.split('/').pop() //get name of the image
+          const selectedImageName = new URL(selectedImagePath).pathname.split('/').pop()                          //get name of the image
 
           await axios.delete(`/images/remove/${selectedImageName}`)
 
-          await getImages() //refresh the list 
+          await getImages()                                                                                       //refresh the list 
+
           //NOTE: another approach is to just pop the newly deleted image from the imageList, but I didn't do it because that way
           //      if we open 2 windows and we delete on each one some images, the first window won't see the changes made in the second one (and vice versa)
 
