@@ -187,7 +187,7 @@ exports.stubRotateImage = async (imageId, doesImageExist) => {
 }
 
 //function to test removing image
-exports.stubRemoveImage = async (imageId, indexList, doesImageExist) => {
+exports.stubRemoveImage = async (imageId, doesImageExist) => {
     const logStub = sinon.stub(Logger, 'log') //mocks a Logger.log() function so it doesn't write in the log file during testing
 
     const req = { //req body sent
@@ -221,8 +221,6 @@ exports.stubRemoveImage = async (imageId, indexList, doesImageExist) => {
     await imageController.deleteRemoveImage(req, res, () => {})
 
     if (doesImageExist) {
-        indexList = indexList.filter(item => item.filename !== imageId) //update indexList
-
         expect(indexController.removeFromIndexList.calledOnceWith(imageId)).to.be.true //add to index list was called with given imageId
         expect(indexController.updateIndexJson.calledOnce).to.be.true //update indexJson was called once as well
         expect(res.statusCode).to.be.equal(200) //expect it succeded
