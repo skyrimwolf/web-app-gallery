@@ -3,19 +3,19 @@ const expect = require('chai').expect
 const logger = require('../controllers/logger')
 
  describe('Tests for replaying crops', () => {
-    it ('should replay logs successfully', async function() { //must be function() instead of () => {} because of "this" keyword
-        this.timeout(0); //no timeout because replay time will vary based on the crop
+    it ('should replay logs successfully', async function() {                                           //must be function() instead of () => {} because of "this" keyword
+        this.timeout(0);                                                                                //no timeout because replay time will vary based on the crop
 
         const startTime = new Date('2024-01-30T18:54:57.414Z')
         const endTime = new Date('2024-01-30T18:55:07.181Z')
-        const logs = await logger.makeCropLog(startTime, endTime) //6 rows, structure is something like this:   { time: 1706640897414, functionName: 'postUploadImage' }
+        const logs = await logger.makeCropLog(startTime, endTime)                                       //6 rows, structure is something like this: { time: 1706640897414, functionName: 'postUploadImage' }
         const imageList = []
 
-        await logReplayer(imageList, logs, {filename: 'macka.jpg', originalname: 'macka.jpg'}, 2) // imageList, logs, picture with which you want to replay logs, scaling factor
+        await logReplayer(imageList, logs, {filename: 'macka.jpg', originalname: 'macka.jpg'}, 2)       // imageList, logs, picture with which you want to replay logs, scaling factor
     })
 
     it ('should successfully replay multiple crops combined', async function() {
-        this.timeout(0) //no timeout because replay time will vary based on the crop
+        this.timeout(0)                                                                                 //no timeout because replay time will vary based on the crop
 
         const start1 = new Date('2024-01-30T18:54:57.414Z')
         const end1 = new Date('2024-01-30T18:55:07.181Z')
@@ -36,7 +36,7 @@ const logger = require('../controllers/logger')
 
         const imageList = []
 
-        await logReplayer(imageList, mergedLogs, {filename: 'macka.jpg', originalname: 'macka.jpg'}, 2) // imageList, logs, picture with which you want to replay logs, scaling factor
+        await logReplayer(imageList, mergedLogs, {filename: 'macka.jpg', originalname: 'macka.jpg'}, 2)                 // imageList, logs, picture with which you want to replay logs, scaling factor
 
         // console.log('Images: ')
 
@@ -66,9 +66,9 @@ const logger = require('../controllers/logger')
 
         // mergedLogs.forEach(el => console.log(el))
 
-        expect(mergedLogs.length).to.equal(6) //even tho crop1 has 5 rows, and crop2 has 5 as well, they overlap!!!
+        expect(mergedLogs.length).to.equal(6)                                                                               //even tho crop1 has 5 rows, and crop2 has 5 as well, they overlap!!!
 
-        await logReplayer(imageList, mergedLogs, {filename: 'macka.jpg', originalname: 'macka.jpg'}, 2) // imageList, logs, picture with which you want to replay logs, scaling factor
+        await logReplayer(imageList, mergedLogs, {filename: 'macka.jpg', originalname: 'macka.jpg'}, 2)                     // imageList, logs, picture with which you want to replay logs, scaling factor
 
         // console.log('Images: ')
 

@@ -8,10 +8,10 @@ describe('Tests for making sure controllers work', () => {
     })
 
     it ('should upload image successfully', async () => {
-        const dummyImage = { //here are the same but in reality, if we have more macka.jpgs, filename will look like macka_1.jpg, and originalname will stay the same
+        const dummyImage = {                                                                                //here are the same but in reality, if we have more macka.jpgs, filename will look like macka_1.jpg, and originalname will stay the same
             filename: 'macka.jpg',
             originalname: 'macka.jpg'
-        }//'1706782556758_macka.jpg'
+        }
         
         const imageList = []
 
@@ -21,50 +21,50 @@ describe('Tests for making sure controllers work', () => {
     })
 
     it ('should download image successfully', async () => {
-        const dummyImage = { //here are the same but in reality, if we have more macka.jpgs, filename will look like macka_1.jpg, and originalname will stay the same
+        const dummyImage = {                                                                                //here are the same but in reality, if we have more macka.jpgs, filename will look like macka_1.jpg, and originalname will stay the same
             filename: 'macka.jpg',
             originalname: 'macka.jpg'
-        }//'1706782556758_macka.jpg'
-        const isImageInIndexJson = true //doing it like this because index.json is changable
+        }
+        const isImageInIndexJson = true                                                                     //doing it like this because index.json is changable
 
         await testController.stubDownloadImage(dummyImage, isImageInIndexJson)
     })
 
     it ('should fail downloading image', async () => {
-        const dummyImage = { //here are the same but in reality, if we have more macka.jpgs, filename will look like macka_1.jpg, and originalname will stay the same
+        const dummyImage = {                                                                                //here are the same but in reality, if we have more macka.jpgs, filename will look like macka_1.jpg, and originalname will stay the same
             filename: 'macka.jpg',
             originalname: 'macka.jpg'
-        }//'1706782556758_macka.jpg'
-        const isImageInIndexJson = false //doing it like this because index.json is changable
+        }
+        const isImageInIndexJson = false                                                                    //doing it like this because index.json is changable
 
         await testController.stubDownloadImage(dummyImage, isImageInIndexJson)
     })
 
     it ('should rotate image successfully', async () => {
-        const dummyImage = { //here are the same but in reality, if we have more macka.jpgs, filename will look like macka_1.jpg, and originalname will stay the same
+        const dummyImage = {                                                                                //here are the same but in reality, if we have more macka.jpgs, filename will look like macka_1.jpg, and originalname will stay the same
             filename: 'macka.jpg',
             originalname: 'macka.jpg'
-        }//'1706782556758_macka.jpg'
-        const isImageInIndexJson = true //doing it like this because index.json is changable
+        }
+        const isImageInIndexJson = true                                                                     //doing it like this because index.json is changable
 
         await testController.stubRotateImage(dummyImage, isImageInIndexJson)
     })
 
     it ('should fail rotating image', async () => {
-        const dummyImage = { //here are the same but in reality, if we have more macka.jpgs, filename will look like macka_1.jpg, and originalname will stay the same
+        const dummyImage = {                                                                                //here are the same but in reality, if we have more macka.jpgs, filename will look like macka_1.jpg, and originalname will stay the same
             filename: 'macka.jpg',
             originalname: 'macka.jpg'
-        }//'1706782556758_macka.jpg'
-        const isImageInIndexJson = false //doing it like this because index.json is changable
+        }
+        const isImageInIndexJson = false                                                                    //doing it like this because index.json is changable
 
         await testController.stubRotateImage(dummyImage, isImageInIndexJson)
     })
 
     it ('should delete image successfully', async () => {
-        const dummyImage = { //here are the same but in reality, if we have more macka.jpgs, filename will look like macka_1.jpg, and originalname will stay the same
+        const dummyImage = {                                                                                //here are the same but in reality, if we have more macka.jpgs, filename will look like macka_1.jpg, and originalname will stay the same
             filename: 'macka.jpg',
             originalname: 'macka.jpg'
-        }//'1706782556758_macka.jpg'
+        }
 
         let dummyImageList = [dummyImage]
         const isImageInIList = true
@@ -75,14 +75,14 @@ describe('Tests for making sure controllers work', () => {
     })
 
     it ('should fail deleting image', async () => {
-        const dummyImage = { //here are the same but in reality, if we have more macka.jpgs, filename will look like macka_1.jpg, and originalname will stay the same
+        const dummyImage = {                                                                                //here are the same but in reality, if we have more macka.jpgs, filename will look like macka_1.jpg, and originalname will stay the same
             filename: 'macka.jpg',
             originalname: 'macka.jpg'
-        }//'1706782556758_macka.jpg'
+        }
 
         let dummyImageList = []
         const isImageInIList = false
 
-        dummyImageList = await testController.stubRemoveImage(dummyImageList, dummyImage, isImageInIList) //expected to not do anything
+        dummyImageList = await testController.stubRemoveImage(dummyImageList, dummyImage, isImageInIList)   //expected to not do anything
     })
 })

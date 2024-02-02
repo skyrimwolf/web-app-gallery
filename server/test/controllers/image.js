@@ -10,9 +10,11 @@ const Logger = require('../../models/logger')
 
 //NOTE: these functions do test only one specific controller, but they are neccessary for replaying logs without making any changes
 
+
+
 //function to test getting all images
-exports.stubGetAllImages = async () => { //stub function to test
-    const logStub = sinon.stub(Logger, 'log') //mocks a Logger.log() function so it doesn't write in the log file during testing
+exports.stubGetAllImages = async () => {                                            //stub function to test
+    const logStub = sinon.stub(Logger, 'log')                                       //mocks a Logger.log() function so it doesn't write in the log file during testing
 
     const res = { //prepare res to send
         statusCode: 500,
@@ -26,26 +28,26 @@ exports.stubGetAllImages = async () => { //stub function to test
         }
     }
   
-    await imageController.getGetAllImageNames({}, res, () => {}) //call the function
+    await imageController.getGetAllImageNames({}, res, () => {})                    //call the function
     
-    expect(res.statusCode).to.be.equal(200) //expect it succeded
-    expect(logStub.calledOnce).to.be.true //log was called
+    expect(res.statusCode).to.be.equal(200)                                         //expect it succeded
+    expect(logStub.calledOnce).to.be.true                                           //log was called
 
-    logStub.restore() //restores original logging function
+    logStub.restore()                                                               //restores original logging function
 }
 
 //function to test uploading image
 exports.stubUploadImage = async (imageList, image) => {
-    const logStub = sinon.stub(Logger, 'log') //mocks a Logger.log() function so it doesn't write in the log file during testing
+    const logStub = sinon.stub(Logger, 'log')                                       //mocks a Logger.log() function so it doesn't write in the log file during testing
 
-    const req = { //req body sent
+    const req = {                                                                   //req body sent
         file: {
           filename: image.filename,
           originalname: image.originalname
         }
     }
 
-    const res = { //prepare res to send
+    const res = {                                                                   //prepare res to send
         statusCode: 500,
         message: null,
         imagePath: null,
@@ -59,21 +61,21 @@ exports.stubUploadImage = async (imageList, image) => {
         }
     }
 
-    sinon.stub(indexController, 'addToIndexList') //prevent from adding to index list
-    sinon.stub(indexController, 'updateIndexJson') //prevent from updating index.json
+    sinon.stub(indexController, 'addToIndexList')                                   //prevent from adding to index list
+    sinon.stub(indexController, 'updateIndexJson')                                  //prevent from updating index.json
 
     await imageController.postUploadImage(req, res)
 
-    expect(indexController.addToIndexList.calledOnceWith(image)).to.be.true //add to index list was called with given imageId
-    expect(indexController.updateIndexJson.calledOnce).to.be.true //update indexJson was called once as well
-    expect(res.statusCode).to.be.equal(200) //expect it succeded
-    expect(res.message).to.be.equal('Image uploaded successfully!') //expect this message
-    expect(logStub.calledOnce).to.be.true //called log file
+    expect(indexController.addToIndexList.calledOnceWith(image)).to.be.true         //add to index list was called with given imageId
+    expect(indexController.updateIndexJson.calledOnce).to.be.true                   //update indexJson was called once as well
+    expect(res.statusCode).to.be.equal(200)                                         //expect it succeded
+    expect(res.message).to.be.equal('Image uploaded successfully!')                 //expect this message
+    expect(logStub.calledOnce).to.be.true                                           //called log file
 
     imageList.push({
-        filename: uniqueName.returnUniqueName(imageList, image.originalname), //rename to be unique
+        filename: uniqueName.returnUniqueName(imageList, image.originalname),       //rename to be unique
         originalname: image.originalname
-    })//push to list (like a real upload will)
+    })                                                                              //push to list (like a real upload will)
 
     logStub.restore() //restores original logging function
     sinon.restore()
@@ -81,15 +83,15 @@ exports.stubUploadImage = async (imageList, image) => {
 
 //function to test downloading image
 exports.stubDownloadImage = async (image, doesImageExist) => {
-    const logStub = sinon.stub(Logger, 'log') //mocks a Logger.log() function so it doesn't write in the log file during testing
+    const logStub = sinon.stub(Logger, 'log')                                       //mocks a Logger.log() function so it doesn't write in the log file during testing
     
-    const req = { //req body sent
+    const req = {                                                                   //req body sent
         params: {
           imageId: image.filename
         }
     }
 
-    const res = { //prepare res to send
+    const res = {                                                                   //prepare res to send
         statusCode: 500,
         message: null,
         image: null,
@@ -117,34 +119,34 @@ exports.stubDownloadImage = async (image, doesImageExist) => {
 
     await imageController.getDownloadImage(req, res, () => {})
 
-    if (doesImageExist) { //if there exists an image, it should resolve
+    if (doesImageExist) {                                                           //if there exists an image, it should resolve
         expect(res.statusCode).to.equal(200)
         expect(res.image).to.be.not.null
     }
-    else { //if there doesn't exist an image, it should reject
+    else {                                                                          //if there doesn't exist an image, it should reject
         expect(res.statusCode).to.equal(404)
         expect(res.message).to.equal('getDownloadImage(): Image not found!')
     }
 
     expect(logStub.calledOnce).to.be.true
     
-    logStub.restore() //restores original logging function
-    sinon.restore() //restore fs  
+    logStub.restore()                                                               //restores original logging function
+    sinon.restore()                                                                 //restore fs  
 }
 
 //function to test rotating image
 exports.stubRotateImage = async (image, doesImageExist) => {
-    const logStub = sinon.stub(Logger, 'log') //mocks a Logger.log() function so it doesn't write in the log file during testing
+    const logStub = sinon.stub(Logger, 'log')                                       //mocks a Logger.log() function so it doesn't write in the log file during testing
     const rotateStub = sinon.stub().returnsThis()
-    let toBufferStub //has to be let because it will be initialized in an if-else block
+    let toBufferStub                                                                //has to be let because it will be initialized in an if-else block
 
-    const req = { //req body sent
+    const req = {                                                                   //req body sent
         params: {
           imageId: image.filename
         }
     }
 
-    const res = { //prepare res to send
+    const res = {                                                                   //prepare res to send
         statusCode: 500,
         message: null,
         status: function(code) {
@@ -169,41 +171,41 @@ exports.stubRotateImage = async (image, doesImageExist) => {
         toBufferStub = sinon.stub().rejects()
     } 
     
-    sinon.stub(sharp.prototype, 'rotate').callsFake(rotateStub) //calls fake rotate when real rotate is being called
-    sinon.stub(sharp.prototype, 'toBuffer').callsFake(toBufferStub) //calls fake toBuffer when real toBuffer is being called
+    sinon.stub(sharp.prototype, 'rotate').callsFake(rotateStub)                     //calls fake rotate when real rotate is being called
+    sinon.stub(sharp.prototype, 'toBuffer').callsFake(toBufferStub)                 //calls fake toBuffer when real toBuffer is being called
     
     await imageController.postRotateImage(req, res, () => {})
 
     if (doesImageExist) {
-        expect(res.statusCode).to.be.equal(200) //expect it succeded
-        expect(res.message).to.be.equal('Image rotated successfully!') //expect this message
-        expect(sharp.prototype.rotate.calledOnce).to.be.true //expect sharp rotate to be called
-        expect(sharp.prototype.toBuffer.calledOnce).to.be.true //expect sharp rotate to be called
-        expect(fs.promises.writeFile.calledOnce).to.be.true //expect fs writeFile to be called
+        expect(res.statusCode).to.be.equal(200)                                     //expect it succeded
+        expect(res.message).to.be.equal('Image rotated successfully!')              //expect this message
+        expect(sharp.prototype.rotate.calledOnce).to.be.true                        //expect sharp rotate to be called
+        expect(sharp.prototype.toBuffer.calledOnce).to.be.true                      //expect sharp rotate to be called
+        expect(fs.promises.writeFile.calledOnce).to.be.true                         //expect fs writeFile to be called
     }
     else {
-        expect(res.statusCode).to.be.equal(500) //expect it succeded
-        expect(res.message).to.be.equal('Internal Server Error!') //expect this message
+        expect(res.statusCode).to.be.equal(500)                                     //expect it succeded
+        expect(res.message).to.be.equal('Internal Server Error!')                   //expect this message
     }
 
-    expect(fs.promises.readFile.calledOnce).to.be.true //expect fs readFile to be called
+    expect(fs.promises.readFile.calledOnce).to.be.true                              //expect fs readFile to be called
     expect(logStub.calledOnce).to.be.true
 
-    logStub.restore() //restores original logging function
-    sinon.restore() //restore all functions
+    logStub.restore()                                                               //restores original logging function
+    sinon.restore()                                                                 //restore all functions
 }
 
 //function to test removing image
 exports.stubRemoveImage = async (imageList, image, doesImageExist) => {
-    const logStub = sinon.stub(Logger, 'log') //mocks a Logger.log() function so it doesn't write in the log file during testing
+    const logStub = sinon.stub(Logger, 'log')                                       //mocks a Logger.log() function so it doesn't write in the log file during testing
 
-    const req = { //req body sent
+    const req = {                                                                   //req body sent
         params: {
           imageId: image.filename
         }
     }
 
-    const res = { //prepare res to send
+    const res = {                                                                   //prepare res to send
         statusCode: 500,
         message: null,
         status: function(code) {
@@ -215,35 +217,35 @@ exports.stubRemoveImage = async (imageList, image, doesImageExist) => {
         }
     }
 
-    sinon.stub(indexController, 'removeFromIndexList') //prevent from really calling this 
-    sinon.stub(indexController, 'updateIndexJson') //prevent from updating index.json
+    sinon.stub(indexController, 'removeFromIndexList')                              //prevent from really calling this 
+    sinon.stub(indexController, 'updateIndexJson')                                  //prevent from updating index.json
 
-    if (doesImageExist) { //if there exists an image, it should resolve
+    if (doesImageExist) {                                                           //if there exists an image, it should resolve
         sinon.stub(fs.promises, 'unlink').resolves()
     }
-    else { //if there doesn't exist an image, it should reject
+    else {                                                                          //if there doesn't exist an image, it should reject
         sinon.stub(fs.promises, 'unlink').rejects()
     }
 
     await imageController.deleteRemoveImage(req, res, () => {})
 
     if (doesImageExist) {
-        expect(indexController.removeFromIndexList.calledOnceWith(image.filename)).to.be.true //add to index list was called with given imageId
-        expect(indexController.updateIndexJson.calledOnce).to.be.true //update indexJson was called once as well
-        expect(res.statusCode).to.be.equal(200) //expect it succeded
-        expect(res.message).to.be.equal('Image removed successfully!') //expect this message
+        expect(indexController.removeFromIndexList.calledOnceWith(image.filename)).to.be.true   //add to index list was called with given imageId
+        expect(indexController.updateIndexJson.calledOnce).to.be.true                           //update indexJson was called once as well
+        expect(res.statusCode).to.be.equal(200)                                                 //expect it succeded
+        expect(res.message).to.be.equal('Image removed successfully!')                          //expect this message
 
-        imageList = imageList.filter(currImage => currImage !== image) //remove from imageList
+        imageList = imageList.filter(currImage => currImage !== image)                          //remove from imageList
     }
     else {
-        expect(res.statusCode).to.be.equal(500) //expect it succeded
-        expect(res.message).to.be.equal('Internal Server Error!') //expect this message
+        expect(res.statusCode).to.be.equal(500)                                                 //expect it succeded
+        expect(res.message).to.be.equal('Internal Server Error!')                               //expect this message
     }
 
     expect(logStub.calledOnce).to.be.true
 
-    sinon.restore() //restores all sinon.stub() functions
-    logStub.restore() //restores original logging function
+    sinon.restore()                                                                             //restores all sinon.stub() functions
+    logStub.restore()                                                                           //restores original logging function
 
-    return imageList
+    return imageList                                                                            //return the changed imageList
 }

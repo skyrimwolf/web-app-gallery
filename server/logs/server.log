@@ -208,3 +208,57 @@
 {"level":"info","message":"postRotateImage(): Image 1706814313635_macka.jpg rotated successfully!","timestamp":"2024-02-01T19:32:17.866Z"}
 {"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T11:45:55.430Z"}
 {"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T11:45:55.573Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:32:30.503Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:32:30.594Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706814313635_macka.jpg removed successfully!","timestamp":"2024-02-02T16:32:35.202Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:32:35.210Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706813948923_rad.jpg removed successfully!","timestamp":"2024-02-02T16:32:38.681Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:32:38.947Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706814320880_macka.jpg removed successfully!","timestamp":"2024-02-02T16:32:42.196Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:32:42.508Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706814316380_macka.jpg removed successfully!","timestamp":"2024-02-02T16:32:45.410Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:32:45.721Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706814310588_macka.jpg removed successfully!","timestamp":"2024-02-02T16:32:48.582Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:32:48.901Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706814306447_macka.jpg removed successfully!","timestamp":"2024-02-02T16:32:51.486Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:32:51.805Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706782495166_macka.jpg removed successfully!","timestamp":"2024-02-02T16:32:55.522Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:32:55.834Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706638248731_tigar.jpg removed successfully!","timestamp":"2024-02-02T16:32:59.250Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:32:59.570Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706635854738_kola.jpg removed successfully!","timestamp":"2024-02-02T16:33:02.851Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:33:03.171Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706626285004_tigar.jpg removed successfully!","timestamp":"2024-02-02T16:33:05.799Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:33:06.107Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706626280638_kola.jpg removed successfully!","timestamp":"2024-02-02T16:33:08.520Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:33:08.842Z"}
+{"level":"info","message":"postUploadImage(): Image 1706891620729_kola.jpg uploaded successfully!","timestamp":"2024-02-02T16:33:40.736Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:33:41.050Z"}
+{"level":"info","message":"deleteRemoveImage(): Image 1706891620729_kola.jpg removed successfully!","timestamp":"2024-02-02T16:33:52.013Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:33:52.321Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:35:57.594Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:35:57.793Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:39:29.772Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:39:29.996Z"}
+{"level":"info","message":"postUploadImage(): Image kola.jpg uploaded successfully!","timestamp":"2024-02-02T16:39:34.736Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:39:34.742Z"}
+{"level":"info","message":"postUploadImage(): Image macka.jpg uploaded successfully!","timestamp":"2024-02-02T16:40:32.562Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:40:32.822Z"}
+{"level":"info","message":"postUploadImage(): Image tigar.jpg uploaded successfully!","timestamp":"2024-02-02T16:40:46.504Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:40:46.821Z"}
+{"level":"info","message":"postUploadImage(): Image macka_1.jpg uploaded successfully!","timestamp":"2024-02-02T16:40:50.912Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:40:51.230Z"}
+{"level":"info","message":"postUploadImage(): Image rad.jpg uploaded successfully!","timestamp":"2024-02-02T16:40:58.606Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:40:58.917Z"}
+{"level":"info","message":"getDownloadImage(): Image tigar.jpg downloaded successfully!","timestamp":"2024-02-02T16:41:04.289Z"}
+{"level":"info","message":"postRotateImage(): Image macka_1.jpg rotated successfully!","timestamp":"2024-02-02T16:41:17.841Z"}
+{"level":"info","message":"postUploadImage(): Image tigar_1.jpg uploaded successfully!","timestamp":"2024-02-02T16:41:28.246Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:41:28.556Z"}
+{"level":"info","message":"deleteRemoveImage(): Image tigar_1.jpg removed successfully!","timestamp":"2024-02-02T16:41:31.196Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:41:31.504Z"}
+{"level":"info","message":"postUploadImage(): Image tigar_1.jpg uploaded successfully!","timestamp":"2024-02-02T16:41:38.796Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:41:39.117Z"}
+{"level":"info","message":"deleteRemoveImage(): Image tigar_1.jpg removed successfully!","timestamp":"2024-02-02T16:41:42.122Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:41:42.434Z"}
+{"level":"info","message":"postUploadImage(): Image macka_2.jpg uploaded successfully!","timestamp":"2024-02-02T16:41:48.015Z"}
+{"level":"info","message":"getAllImages(): Successfully got list of image names with paths","timestamp":"2024-02-02T16:41:48.324Z"}

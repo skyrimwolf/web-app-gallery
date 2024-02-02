@@ -9,7 +9,7 @@ exports.readLogs = async () => {
         const logs = await fs.readFile(logDir, 'utf-8')
 
         return logs.split('\n')
-                    .filter(Boolean) //filter empty lines, to be sure, because it JSON.parse('') would throw an error!
+                    .filter(Boolean)                              //filter empty lines, to be sure, because it JSON.parse('') would throw an error!
                     .map((row) => JSON.parse(row))
     }
     catch (err) {
