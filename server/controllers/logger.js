@@ -28,7 +28,10 @@ exports.concatCrops = (crops) => {
     let cropArray = crops.flatMap(row => row)
                             .sort((a, b) => a.time - b.time) //sorting handles case where crop1 is after crop2, even if its chosen before crop2! -> crop1.startTime > crop2. endTime
 
-    cropArray = [...new Set(cropArray)] //after they are sorted, remove duplicates (handles overlapping case! -> crop2.startTime <= crop1.endTime && crop2.startTime >= crop1.startTime)
+    const jsonObject = cropArray.map(JSON.stringify)
+    const uniqueSet = new Set(jsonObject)
+    
+    cropArray = Array.from(uniqueSet).map(JSON.parse) //get unique crops (case when they overlap!!)
 
     let mergedCrops = []
     let offsetStartTime = cropArray[0].time //if the time of the first one is 1706640897729, that will be it's offset

@@ -38,7 +38,7 @@ exports.getGetAllImageNames = async (req, res, next) => {
 exports.postUploadImage = async (req, res, next) => {
     const destPath = path.join(rootDir, 'images', req.file.filename)
 
-    indexListUtil.addToIndexList({filename: req.file.filename}) //add new object to indexList
+    indexListUtil.addToIndexList({filename: req.file.filename, originalname: req.file.originalname}) //add new object to indexList
     //NOTE: I thought about putting in the imagePath, but since you'll be checking if everything works, for it to work would then require me to have the server running at all times
     //      because the path would have my URL from PC if i send you some images to be loaded upon first run (like pre-loaded data so you can see everything is working nicely)
     //      although, in reality, i'd put in the path and perhaps some other info as well

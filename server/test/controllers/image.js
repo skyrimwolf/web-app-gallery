@@ -5,6 +5,7 @@ const expect = require('chai').expect
 
 const imageController = require('../../controllers/image')
 const indexController = require('../../controllers/indexList')
+const uniqueName = require('../../util/uniqueName')
 const Logger = require('../../models/logger')
 
 //NOTE: these functions do test only one specific controller, but they are neccessary for replaying logs without making any changes
@@ -34,12 +35,13 @@ exports.stubGetAllImages = async () => { //stub function to test
 }
 
 //function to test uploading image
-exports.stubUploadImage = async (imageId) => {
+exports.stubUploadImage = async (imageList, image) => {
     const logStub = sinon.stub(Logger, 'log') //mocks a Logger.log() function so it doesn't write in the log file during testing
-    
+
     const req = { //req body sent
         file: {
-          filename: imageId
+          filename: image.filename,
+          originalname: image.originalname
         }
     }
 
@@ -62,23 +64,28 @@ exports.stubUploadImage = async (imageId) => {
 
     await imageController.postUploadImage(req, res)
 
-    expect(indexController.addToIndexList.calledOnceWith({filename: imageId})).to.be.true //add to index list was called with given imageId
+    expect(indexController.addToIndexList.calledOnceWith(image)).to.be.true //add to index list was called with given imageId
     expect(indexController.updateIndexJson.calledOnce).to.be.true //update indexJson was called once as well
     expect(res.statusCode).to.be.equal(200) //expect it succeded
     expect(res.message).to.be.equal('Image uploaded successfully!') //expect this message
     expect(logStub.calledOnce).to.be.true //called log file
+
+    imageList.push({
+        filename: uniqueName.returnUniqueName(imageList, image.originalname), //rename to be unique
+        originalname: image.originalname
+    })//push to list (like a real upload will)
 
     logStub.restore() //restores original logging function
     sinon.restore()
 }
 
 //function to test downloading image
-exports.stubDownloadImage = async (imageId, doesImageExist) => {
+exports.stubDownloadImage = async (image, doesImageExist) => {
     const logStub = sinon.stub(Logger, 'log') //mocks a Logger.log() function so it doesn't write in the log file during testing
     
     const req = { //req body sent
         params: {
-          imageId: imageId
+          imageId: image.filename
         }
     }
 
@@ -126,14 +133,14 @@ exports.stubDownloadImage = async (imageId, doesImageExist) => {
 }
 
 //function to test rotating image
-exports.stubRotateImage = async (imageId, doesImageExist) => {
+exports.stubRotateImage = async (image, doesImageExist) => {
     const logStub = sinon.stub(Logger, 'log') //mocks a Logger.log() function so it doesn't write in the log file during testing
     const rotateStub = sinon.stub().returnsThis()
     let toBufferStub //has to be let because it will be initialized in an if-else block
 
     const req = { //req body sent
         params: {
-          imageId: imageId
+          imageId: image.filename
         }
     }
 
@@ -187,12 +194,12 @@ exports.stubRotateImage = async (imageId, doesImageExist) => {
 }
 
 //function to test removing image
-exports.stubRemoveImage = async (imageId, doesImageExist) => {
+exports.stubRemoveImage = async (imageList, image, doesImageExist) => {
     const logStub = sinon.stub(Logger, 'log') //mocks a Logger.log() function so it doesn't write in the log file during testing
 
     const req = { //req body sent
         params: {
-          imageId: imageId
+          imageId: image.filename
         }
     }
 
@@ -221,10 +228,12 @@ exports.stubRemoveImage = async (imageId, doesImageExist) => {
     await imageController.deleteRemoveImage(req, res, () => {})
 
     if (doesImageExist) {
-        expect(indexController.removeFromIndexList.calledOnceWith(imageId)).to.be.true //add to index list was called with given imageId
+        expect(indexController.removeFromIndexList.calledOnceWith(image.filename)).to.be.true //add to index list was called with given imageId
         expect(indexController.updateIndexJson.calledOnce).to.be.true //update indexJson was called once as well
         expect(res.statusCode).to.be.equal(200) //expect it succeded
         expect(res.message).to.be.equal('Image removed successfully!') //expect this message
+
+        imageList = imageList.filter(currImage => currImage !== image) //remove from imageList
     }
     else {
         expect(res.statusCode).to.be.equal(500) //expect it succeded
@@ -235,4 +244,6 @@ exports.stubRemoveImage = async (imageId, doesImageExist) => {
 
     sinon.restore() //restores all sinon.stub() functions
     logStub.restore() //restores original logging function
+
+    return imageList
 }
